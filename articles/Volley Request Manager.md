@@ -1,6 +1,6 @@
 ##Volley Request Manager
 
-On mine 3 years of developing practice every second project had feature like Http Client or Image Loader and can easily done with [Volley][1]. Thats why I decided to develop some sort of model that can provide easy and reusable interface for it.
+On mine 3 years of developing practice every second project had feature like Http Client or Image Loader and can be easily done with [Volley][1]. Thats why I decided to develop some sort of model that can provide easy and reusable interface for it.
 
 Look on this great and easy to understand article from [Dmytro Danylyk][2] - [Volley Part 2 - Application Model][3]. As he said if you want to control your request and queues from different parts of application, you need to use [Singleton][4].
 
