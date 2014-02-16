@@ -36,7 +36,7 @@ public class RequestManager {
 
     public void doRequest() {
         final Request request = //your request initialization here
-        return mRequestQueue.add(request);
+        mRequestQueue.add(request);
     }
 }
 ```
