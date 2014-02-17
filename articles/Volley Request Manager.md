@@ -62,8 +62,66 @@ public class QueueBuilder {
     
     private Map<String, RequestQueue> mRequestQueue = new HashMap<String, RequestQueue>();
     
+    private String mCurQueue;    
+    
+    public QueueBuilder(Context context) {
+        mContext = context;
+    }
+    
+    public RequestController use(String queueName) {
+        validateQueue(queueName);
+        mCurQueue = queueName;
+        return mRequestController;
+    }
+    
+    private void validateQueue(String queueName) {
+        if (!mRequestQueue.containsKey(queueName)) {
+            final RequestQueue queue = RequestQueueFactory.getQueue(mContext, queueName);
+            if (queue != null) {
+                mRequestQueue.put(queueName, queue);
+            } else {
+                throw new IllegalArgumentException(
+                        "RequestQueue - \"" + queueName + "\" doesn't exists!");
+            }
+        }
+    }
+    
 }    
 ```
+And to collect all yours Queues use simple Factory class :
+```java
+public class RequestQueueFactory {
+
+    public static RequestQueue getQueue(Context context, String name) {
+        RequestQueue result = null;
+
+        if (RequestOptions.DEFAULT_QUEUE.equals(name)) {
+            result = getDefault(context);
+        }
+        if (RequestOptions.BACKGROUND_QUEUE.equals(name)) {
+            result = newBackgroundQueue(context);
+        }
+
+        return result;
+    }
+
+    public static RequestQueue getDefault(Context context) {
+        return Volley.newRequestQueue(context.getApplicationContext());
+    }
+    
+    //... all your queue realizations and helpers
+}
+```
+You can define simple method to use your favorite queue
+```java
+public class QueueBuilder {
+    //...
+    public RequestController useBackgroundQueue() {
+        return use(RequestOptions.BACKGROUND_QUEUE);
+    }    
+}
+```
+
   [1]: https://developers.google.com/events/io/sessions/325304728
   [2]: http://dmytrodanylyk.github.io/dmytrodanylyk
   [3]: https://github.com/dmytrodanylyk/dmytrodanylyk/blob/gh-pages/articles/volley-part-2.md
