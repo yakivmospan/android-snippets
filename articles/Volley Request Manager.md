@@ -38,9 +38,32 @@ public class RequestManager {
         final Request request = //your request initialization here
         mRequestQueue.add(request);
     }
+    
+    //... other requests goes here
 }
 ```
+And it will be great, great until you need to use different queues in your application. You will tell that there is no problems, just add new `RequestQueue` field and initialize it
+```java
+    private RequestQueue mSecondRequestQueue;
+    
+    private RequestManager(Context context) {
+        //...
+        mSecondRequestQueue = //create your custom Queue here
+    }
+```
+And what to do when there is more than two or three of them?
+More fields?
 
+There is more radical solution - `Map`.
+```java
+public class QueueBuilder {
+
+    private Context mContext;
+    
+    private Map<String, RequestQueue> mRequestQueue = new HashMap<String, RequestQueue>();
+    
+}    
+```
   [1]: https://developers.google.com/events/io/sessions/325304728
   [2]: http://dmytrodanylyk.github.io/dmytrodanylyk
   [3]: https://github.com/dmytrodanylyk/dmytrodanylyk/blob/gh-pages/articles/volley-part-2.md
