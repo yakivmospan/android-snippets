@@ -122,6 +122,8 @@ public class QueueBuilder {
 }
 ```
 
+Another ugly problem is Requests creation. You will definitely meet it in your new tasty project 
+
   [1]: https://developers.google.com/events/io/sessions/325304728
   [2]: http://dmytrodanylyk.github.io/dmytrodanylyk
   [3]: https://github.com/dmytrodanylyk/dmytrodanylyk/blob/gh-pages/articles/volley-part-2.md
