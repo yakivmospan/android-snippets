@@ -122,7 +122,22 @@ public class QueueBuilder {
 }
 ```
 
-Another ugly problem is Requests creation. You will definitely meet it in your new tasty project 
+Another ugly problem is Requests creation. You will definitely meet it in your new tasty project while reusing Volley model from old one.
+
+```java
+public class RequestManager {
+    //...
+    //your old Request Manager with old requests.
+    public void doRequest() {
+        final Request request = //your request initialization here
+        mRequestQueue.add(request);
+    }
+    
+    //to reuse this manager on another project you will need to remove or change your old
+    //requests from here
+}
+```
+To create new\remove old\change current requests you will need to change your `RequestManager`. This is not the best practice and just not comfortable.
 
   [1]: https://developers.google.com/events/io/sessions/325304728
   [2]: http://dmytrodanylyk.github.io/dmytrodanylyk
