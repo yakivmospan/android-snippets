@@ -52,7 +52,7 @@ And it will be great, great until you need to use different queues in your appli
     }
 ```
 And what to do when there is more than two or three of them?
-More fields?
+More fields that will migrate from one project to another?
 
 There is more radical solution - `Map`.
 ```java
@@ -122,7 +122,7 @@ public class QueueBuilder {
 }
 ```
 
-Another ugly problem is Requests creation. You will definitely meet it in your new tasty project while reusing Volley model from old one.
+Another ugly problem is Requests creation. If you want to reuse Volley from old project than you will definitely meet it in your new one.
 
 ```java
 public class RequestManager {
@@ -133,7 +133,7 @@ public class RequestManager {
         mRequestQueue.add(request);
     }
     
-    //to reuse this manager on another project you will need to remove or change your old
+    //to reuse this manager in another project you will need to remove or change your old
     //requests from here
 }
 ```
