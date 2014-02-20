@@ -222,7 +222,51 @@ Volley deliver result from Requests into Callbacks that are handled in UI thread
 
 Thats why I've added default Queue that always handle result in background thread. But then I've meet another problem - updating UI after background process. To do this we need to trigger `runOnUiThread()` or use `Handler`
 
-I don't want to do this manually every time I add new Callback and that inner `Runnable` object in inner `Listener` object looks terrible.  
+```java
+private Response.Listener mListener = new Response.Listener<JSONObject>() {
+    @Override
+    public void onResponse(JSONObject o) {
+        //parse and save response data
+        
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                //update UI here
+            }
+        });
+    }
+};
+
+private Response.ErrorListener mErrorListener = new Response.ErrorListener() {
+    @Override
+    public void onErrorResponse(VolleyError volleyError) {
+        //handle errors here (UI thread)    
+    }
+};
+```
+I don't want to do this manually every time I add new Callback and that inner `Runnable` object in inner `Listener` object looks terrible. So I've created Callback that handle result in background and deliver result in UI thread like `AsyncTask` does
+
+```java
+private RequestCallback mRequestCallback = new RequestCallback<JSONObject, ResultType>() {
+    @Override
+    public ResultType doInBackground(JSONObject response) {
+        //parse and save response data
+        return new ResultType();
+    }
+
+    @Override
+    public void onPostExecute(ResultType result) {
+        //update UI here
+        Toast.makeText(getApplicationContext(), "Toast from UI", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onError(VolleyError error) {
+        //handle errors here (UI thread) 
+        L.e(error.toString());
+    }
+};
+```
 
 
 
