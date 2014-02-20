@@ -308,7 +308,7 @@ public abstract class RequestInterface<ResponseType, ResultType>
     }    
 }        
 ```
-new `Request` will look like this
+new `Request` creation will look like this
 
 ```java
 public class TestJsonRequest extends RequestInterface<JSONObject, Void> {
