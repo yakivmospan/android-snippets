@@ -139,7 +139,81 @@ public class RequestManager {
 ```
 To create new\remove old\change current requests you will need to change your `RequestManager`. This is not the best practice and just not comfortable.
 
+Thats why I decided to encapsulate methods and present their behavior as objects ([Strategy][5] design pattern).
+
+```java
+public abstract class RequestInterface {
+    public abstract Request create();
+}
+```
+Now we can create controller that can will work with Queue and this simple Interface
+```java
+public class RequestController {
+
+    private QueueBuilder mQueueBuilder;
+
+    public RequestController(Context context) {
+        mQueueBuilder = new QueueBuilder(context);
+    }
+
+    public RequestController addRequest(RequestInterface volleyRequest) {
+        mQueueBuilder.getRequestQueue().add(volleyRequest.create());
+        return this;
+    }
+
+    public void start() {
+        mQueueBuilder.getRequestQueue().start();
+    }
+
+    public void stop() {
+        mQueueBuilder.getRequestQueue().stop();
+    }
+
+    public void cancelAll(Object tag) {
+        mQueueBuilder.getRequestQueue().cancelAll(tag);
+    }
+
+    public void cancelAll(RequestQueue.RequestFilter requestFilter) {
+        mQueueBuilder.getRequestQueue().cancelAll(requestFilter);
+    }
+}
+```
+Simple Request example:
+```java
+public class TestJsonRequest extends RequestInterface {
+    
+    private Response.Listener<JSONObject> mResponseListener;
+    private Response.ErrorListener errorListener = mErrorListener;
+    
+    public TestJsonRequest(Response.Listener<JSONObject> responseListener,
+            Response.ErrorListener errorListener) {
+        mResponseListener = responseListener;
+        mErrorListener = errorListener;
+    }
+
+    @Override
+    public Request create() {
+        Uri.Builder uri = new Uri.Builder();
+        uri.scheme("http");
+        uri.authority("httpbin.org");
+        uri.path("get");
+        uri.appendQueryParameter("name", "Jon Doe");
+        uri.appendQueryParameter("age", "21");
+        String url = uri.build().toString();
+
+        Request request = new JsonObjectRequest(
+                Request.Method.GET,
+                url,
+                null,
+                mResponseListener,
+                mErrorListener);
+
+        return request;
+    }
+}
+```
   [1]: https://developers.google.com/events/io/sessions/325304728
   [2]: http://dmytrodanylyk.github.io/dmytrodanylyk
   [3]: https://github.com/dmytrodanylyk/dmytrodanylyk/blob/gh-pages/articles/volley-part-2.md
   [4]: http://www.oodesign.com/singleton-pattern.html
+  [5]: http://www.oodesign.com/strategy-pattern.html
