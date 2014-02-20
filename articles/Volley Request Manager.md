@@ -267,9 +267,71 @@ private RequestCallback mRequestCallback = new RequestCallback<JSONObject, Resul
     }
 };
 ```
+and updated `RequestInterface`
+```java
+public abstract class RequestInterface<ResponseType, ResultType>
+        implements Response.Listener<ResponseType>, Response.ErrorListener {
 
+    //...
+    protected Handler mHandler;        
+    
+    private RequestCallback<ResponseType, ResultType> mRequestCallback;      
+    
+    //...
+    public RequestInterface(RequestCallback<ResponseType, ResultType> requestCallback) {
+        mHandler = new Handler(Looper.getMainLooper());
+        mRequestCallback = requestCallback;
+    }
+    
+    @Override
+    public final void onResponse(ResponseType response) {
+        if (mResponseListener != null) {
+            mResponseListener.onResponse(response);
+        } else if (mRequestCallback != null) {
+            final ResultType resultType = mRequestCallback.doInBackground(response);
+            mHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    mRequestCallback.onPostExecute(resultType);
+                }
+            });
+        }
+    }
 
+    @Override
+    public final void onErrorResponse(VolleyError error) {
+        if (mErrorListener != null) {
+            mErrorListener.onErrorResponse(error);
+        } else if (mRequestCallback != null) {
+            mRequestCallback.onError(error);
+        }
+    }    
+}        
+```
+now Request will look like this
 
+```java
+public class TestJsonRequest extends RequestInterface<JSONObject, Void> {
+
+    public TestJsonRequest(RequestCallback<JSONObject, Void> requestObserver) {
+        super(requestObserver);
+    }
+
+    @Override
+    public Request create() {
+        Uri.Builder uri = //uri initialization
+
+        Request request = new JsonObjectRequest(
+                Request.Method.GET,
+                url,
+                null,
+                this,
+                this);
+
+        return request;
+    }
+}
+```
 
   [1]: https://developers.google.com/events/io/sessions/325304728
   [2]: http://dmytrodanylyk.github.io/dmytrodanylyk
