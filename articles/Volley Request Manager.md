@@ -150,7 +150,7 @@ public abstract class RequestInterface {
     public abstract Request create();
 }
 ```
-Now we can create controller that can will work with Queue and this simple Interface
+Now we can create controller that will work with Queue and this simple Interface
 ```java
 public class RequestController {
 
@@ -332,7 +332,7 @@ public class TestJsonRequest extends RequestInterface<JSONObject, Void> {
     }
 }
 ```
-
+###Image Loader
   [1]: https://developers.google.com/events/io/sessions/325304728
   [2]: http://dmytrodanylyk.github.io/dmytrodanylyk
   [3]: https://github.com/dmytrodanylyk/dmytrodanylyk/blob/gh-pages/articles/volley-part-2.md
