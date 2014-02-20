@@ -143,7 +143,7 @@ public class RequestManager {
 ```
 To create new\remove old\change current requests you will need to change your `RequestManager`. This is not the best practice and just not comfortable.
 
-Thats why I decided to encapsulate methods and present their behavior as objects ([Strategy][5] design pattern).
+Thats why I decided to encapsulate methods and make their behavior as objects ([Strategy][5] design pattern).
 
 ```java
 public abstract class RequestInterface {
@@ -216,8 +216,14 @@ public class TestJsonRequest extends RequestInterface {
     }
 }
 ```
+###Background
+
+Volley deliver Request result into Callbacks that are handled in UI thread, this is not good especially when you need to parse and/or save Request result(more about this you can find [here][6]). 
+
+
   [1]: https://developers.google.com/events/io/sessions/325304728
   [2]: http://dmytrodanylyk.github.io/dmytrodanylyk
   [3]: https://github.com/dmytrodanylyk/dmytrodanylyk/blob/gh-pages/articles/volley-part-2.md
   [4]: http://www.oodesign.com/singleton-pattern.html
   [5]: http://www.oodesign.com/strategy-pattern.html
+  [6]: http://goo.gl/dScAvf
