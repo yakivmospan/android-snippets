@@ -220,9 +220,9 @@ public class TestJsonRequest extends RequestInterface {
 
 Volley deliver result from Requests into Callbacks that are handled in UI thread(more about this you can find [here][6]), this is not good especially when you need to parse and/or save Request result. 
 
-So I've added default Queue that always handle result in background thread. But then I've meet another problem - updating UI after background process. To do this we need to trigger `runOnUiThread()` on every callback
+Thats why I've added default Queue that always handle result in background thread. But then I've meet another problem - updating UI after background process. To do this we need to trigger `runOnUiThread()` or use `Handler`
 
-
+I don't want to do this manually every time I add new Callback and that inner `Runnable` object in inner `Listener` object looks terrible.  
 
 
 
