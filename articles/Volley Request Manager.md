@@ -218,7 +218,13 @@ public class TestJsonRequest extends RequestInterface {
 ```
 ###Background
 
-Volley deliver Request result into Callbacks that are handled in UI thread, this is not good especially when you need to parse and/or save Request result(more about this you can find [here][6]). 
+Volley deliver result from Requests into Callbacks that are handled in UI thread(more about this you can find [here][6]), this is not good especially when you need to parse and/or save Request result. 
+
+So I've added default Queue that always handle result in background thread. But then I've meet another problem - updating UI after background process. To do this we need to trigger `runOnUiThread()` on every callback
+
+
+
+
 
 
   [1]: https://developers.google.com/events/io/sessions/325304728
