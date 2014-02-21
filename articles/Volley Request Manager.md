@@ -244,7 +244,7 @@ private Response.ErrorListener mErrorListener = new Response.ErrorListener() {
     }
 };
 ```
-I don't want to do this manually every time I add new Callback and that inner `Runnable` object in inner `Listener` object looks terrible. So I've created Callback that handle result in background and deliver result in UI thread like `AsyncTask` does
+I don't want to do this manually, every time when I add new Callback. And that inner `Runnable` object in inner `Listener` object looks terrible. So I've created Callback that handle result in background and deliver result in UI thread like `AsyncTask` does
 
 ```java
 private RequestCallback mRequestCallback = new RequestCallback<JSONObject, ResultType>() {
