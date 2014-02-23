@@ -1,4 +1,4 @@
-##Volley Request Manager
+## Volley Request Manager
 
 On mine 3 years of developing practice every second project had feature like Http Client or Image Loader and can easily done with [Volley][1]. Thats why I decided to develop some sort of model that will provide:
 
@@ -13,7 +13,7 @@ On mine 3 years of developing practice every second project had feature like Htt
  - Factory that will help to create your own Image Loader
  - Possibility to clear Image Loader memory cache
 
-###Queue
+### Queue
 
 Look on this great and easy to understand article from [Dmytro Danylyk][2] - [Volley Part 2 - Application Model][3]. As he said if you want to control your request and queues from different parts of application, you need to use [Singleton][4].
 
@@ -124,7 +124,7 @@ public class QueueBuilder {
     }    
 }
 ```
-###Request
+### Request
 
 Another ugly problem is Requests creation. If you want to reuse Volley from old project than you will definitely meet it in your new one.
 
@@ -216,7 +216,7 @@ public class TestJsonRequest extends RequestInterface {
     }
 }
 ```
-###Background
+### Background
 
 Volley deliver result from Requests into Callbacks that are handled in UI thread(more about this you can find [here][6]), this is not good especially when you need to parse and/or save Request result. 
 
@@ -332,7 +332,7 @@ public class TestJsonRequest extends RequestInterface<JSONObject, Void> {
     }
 }
 ```
-###Image Loader
+### Image Loader
   [1]: https://developers.google.com/events/io/sessions/325304728
   [2]: http://dmytrodanylyk.github.io/dmytrodanylyk
   [3]: https://github.com/dmytrodanylyk/dmytrodanylyk/blob/gh-pages/articles/volley-part-2.md
