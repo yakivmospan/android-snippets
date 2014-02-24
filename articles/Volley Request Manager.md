@@ -1,6 +1,6 @@
 ## Volley Request Manager
 
-On mine 3 years of developing practice every second project had feature like Http Client or Image Loader and can easily done with [Volley][1]. Thats why I decided to develop some sort of model that will provide:
+On mine 3 years of developing practice every second project had feature, like Http Client or Image Loader, that can easily done with [Volley][1]. Thats why I decided to develop some sort of model that will provide:
 
  - Easy and reusable interface
  - Possibility to use different queues
