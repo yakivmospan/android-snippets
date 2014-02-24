@@ -1,4 +1,5 @@
 ## Volley Request Manager
+[Full source code on github][7]
 
 On mine 3 years of developing practice every second project had feature, like Http Client or Image Loader, that can be easily done with [Volley][1]. Thats why I decided to develop some sort of model that will provide:
 
@@ -448,9 +449,6 @@ Here is an example of how you can deal with it
             .useDefaultLoader()
             .clearCache();
 ```
-
-[Full source code on github][7]
-
 
   [1]: https://developers.google.com/events/io/sessions/325304728
   [2]: http://dmytrodanylyk.github.io/dmytrodanylyk
