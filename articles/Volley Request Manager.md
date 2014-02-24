@@ -150,7 +150,7 @@ public abstract class RequestInterface {
     public abstract Request create();
 }
 ```
-Now we can create controller that will work with Queue and this simple Interface
+Now we can create controller that will work with Queue and that simple Interface
 ```java
 public class RequestController {
 
