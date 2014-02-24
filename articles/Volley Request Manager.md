@@ -363,6 +363,47 @@ public class TestJsonRequest extends RequestInterface<JSONObject, Void> {
     }
 }
 ```
+To avoid Callbacks initialization via `RequestInterface` we need to provide a little update for `RequestController`
+```java
+public class RequestController {
+    //...
+
+    public RequestController addRequest(RequestInterface volleyRequest,
+            RequestCallback requestCallback) {
+        volleyRequest.setRequestCallback(requestCallback);
+        mQueueBuilder.getRequestQueue().add(volleyRequest.create());
+        return this;
+    }
+
+    public RequestController addRequest(RequestInterface volleyRequest,
+            Response.Listener responseListener, Response.ErrorListener errorListener) {
+        volleyRequest.setResponseListener(responseListener);
+        volleyRequest.setErrorListener(errorListener);
+        mQueueBuilder.getRequestQueue().add(volleyRequest.create());
+        return this;
+    }
+    
+    //...
+}
+```
+Now all puzzle parts are ready. After putting them together you will get something like this
+```java
+RequestManager.initializeWith(getApplicationContext());
+
+//Queue using custom listener
+RequestManager.queue()
+        .useBackgroundQueue()
+        .addRequest(new TestJsonRequest(), mRequestCallback)
+        .start();
+        
+//Queue using default volley Response and Error listener
+RequestManager
+        .queue()
+        .useBackgroundQueue()
+        .addRequest(new TestJsonRequest(), mListener, mErrorListener)
+        .start();
+```
+
 ### Image Loader
   [1]: https://developers.google.com/events/io/sessions/325304728
   [2]: http://dmytrodanylyk.github.io/dmytrodanylyk
