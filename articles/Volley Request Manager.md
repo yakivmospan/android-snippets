@@ -269,65 +269,96 @@ private RequestCallback mRequestCallback = new RequestCallback<JSONObject, Resul
 ```
 and updated `RequestInterface`
 ```java
-public abstract class RequestInterface<ResponseType, ResultType>
-        implements Response.Listener<ResponseType>, Response.ErrorListener {
+public abstract class RequestInterface<ResponseType, ResultType> {
 
-    //...
-    protected Handler mHandler;        
-    
-    private RequestCallback<ResponseType, ResultType> mRequestCallback;      
-    
-    //...
-    public RequestInterface(RequestCallback<ResponseType, ResultType> requestCallback) {
+    protected Handler mHandler;
+    private RequestCallback<ResponseType, ResultType> mRequestCallback;
+    private Response.Listener<ResponseType> mResponseListener;
+    private Response.ErrorListener mErrorListener;
+
+    public RequestInterface() {
         mHandler = new Handler(Looper.getMainLooper());
+    }
+
+    public abstract Request create();
+
+    private Response.Listener<ResponseType> mInterfaceListener
+            = new Response.Listener<ResponseType>() {
+        @Override
+        public void onResponse(ResponseType response) {
+            if (mResponseListener != null) {
+                mResponseListener.onResponse(response);
+            } else if (mRequestCallback != null) {
+                final ResultType resultType = mRequestCallback.doInBackground(response);
+                mHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        mRequestCallback.onPostExecute(resultType);
+                    }
+                });
+            }
+        }
+    };
+
+    private Response.ErrorListener mInterfaceErrorListener = new Response.ErrorListener() {
+        @Override
+        public void onErrorResponse(VolleyError error) {
+            if (mErrorListener != null) {
+                mErrorListener.onErrorResponse(error);
+            } else if (mRequestCallback != null) {
+                mRequestCallback.onError(error);
+            }
+        }
+    };
+
+    public final Response.Listener<ResponseType> useInterfaceListener() {
+        return mInterfaceListener;
+    }
+
+    public final Response.ErrorListener useInterfaceErrorListener() {
+        return mInterfaceErrorListener;
+    }
+
+    final void setRequestCallback(RequestCallback<ResponseType, ResultType> requestCallback) {
         mRequestCallback = requestCallback;
     }
-    
-    @Override
-    public final void onResponse(ResponseType response) {
-        if (mResponseListener != null) {
-            mResponseListener.onResponse(response);
-        } else if (mRequestCallback != null) {
-            final ResultType resultType = mRequestCallback.doInBackground(response);
-            mHandler.post(new Runnable() {
-                @Override
-                public void run() {
-                    mRequestCallback.onPostExecute(resultType);
-                }
-            });
-        }
+
+    final void setResponseListener(Response.Listener<ResponseType> responseListener) {
+        mResponseListener = responseListener;
     }
 
-    @Override
-    public final void onErrorResponse(VolleyError error) {
-        if (mErrorListener != null) {
-            mErrorListener.onErrorResponse(error);
-        } else if (mRequestCallback != null) {
-            mRequestCallback.onError(error);
-        }
-    }    
-}        
+    final void setErrorListener(Response.ErrorListener errorListener) {
+        mErrorListener = errorListener;
+    }
+}
 ```
 new `Request` creation will look like this
 
 ```java
 public class TestJsonRequest extends RequestInterface<JSONObject, Void> {
 
-    public TestJsonRequest(RequestCallback<JSONObject, Void> requestObserver) {
-        super(requestObserver);
-    }
-
     @Override
     public Request create() {
-        Uri.Builder uri = //uri initialization
+        Uri.Builder uri = new Uri.Builder();
+        uri.scheme("http");
+        uri.authority("httpbin.org");
+        uri.path("get");
+        uri.appendQueryParameter("name", "Jon Doe");
+        uri.appendQueryParameter("age", "21");
+        String url = uri.build().toString();
 
         Request request = new JsonObjectRequest(
                 Request.Method.GET,
                 url,
                 null,
-                this,
-                this);
-
+                
+                //if you want to use Callbacks provided
+                //via Request Manager interface
+                //use useInterfaceListener() and useInterfaceErrorListener()
+                //instead of creating new listenets here
+                
+                useInterfaceListener(),
+                useInterfaceErrorListener());
         return request;
     }
 }
