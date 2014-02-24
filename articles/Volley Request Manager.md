@@ -1,6 +1,6 @@
 ## Volley Request Manager
 
-On mine 3 years of developing practice every second project had feature, like Http Client or Image Loader, that can easily done with [Volley][1]. Thats why I decided to develop some sort of model that will provide:
+On mine 3 years of developing practice every second project had feature, like Http Client or Image Loader, that can be easily done with [Volley][1]. Thats why I decided to develop some sort of model that will provide:
 
  - Easy and reusable interface
  - Possibility to use different queues
@@ -45,7 +45,7 @@ public class RequestManager {
     //... other requests goes here
 }
 ```
-And it will be great, great until you need to use different queues in your application. You will tell that there is no problems, just add new `RequestQueue` field and initialize it
+And it will be great, great until you need to use different queues in your application. You might say that there are no problems, just add new `RequestQueue` field and initialize it
 ```java
     private RequestQueue mSecondRequestQueue;
     
@@ -386,7 +386,7 @@ public class RequestController {
     //...
 }
 ```
-Now all puzzle parts are ready. After putting them together you will get simple and reusable interface
+Now when all puzzle parts are ready we can put them together. Lets look on it
 ```java
 RequestManager.initializeWith(getApplicationContext());
 
@@ -405,6 +405,49 @@ RequestManager
 ```
 
 ### Image Loader
+Like in Volley Request creation, queues problems are present in Image Loader. So I've added `ImageQueueBuilder` and `ImageLoaderController` like I did for Requests. There is only one different between them - `BitmapLruCache` interface .
+```java
+public class ImageLoaderController {
+
+    private ImageQueueBuilder mImageQueueBuilder;
+
+    public ImageLoaderController(Context context) {
+        mImageQueueBuilder = new ImageQueueBuilder(context);
+    }
+
+    public ImageLoader obtain() {
+        return mImageQueueBuilder.getLoader();
+    }
+
+    public void clearCache() {
+        final BitmapLruCache cache = mImageQueueBuilder.getCache();
+        if (cache != null) {
+            cache.evictAll();
+        }
+    }
+}
+```
+`BitmapLruCache` is responsible for memory caching. It is pretty useful to be able to release memory and furthermore from large `Bitmap`.  
+
+Here is an example of how you can deal with it 
+```java
+
+//load image
+ RequestManager
+            .loader()
+            .useDefaultLoader()
+            .obtain()
+            .get(
+                    "http://farm6.staticflickr.com/5475/10375875123_75ce3080c6_b.jpg",
+                    mImageListener
+            );
+            
+//clear chache
+ RequestManager
+            .loader()
+            .useDefaultLoader()
+            .clearCache();
+```
   [1]: https://developers.google.com/events/io/sessions/325304728
   [2]: http://dmytrodanylyk.github.io/dmytrodanylyk
   [3]: https://github.com/dmytrodanylyk/dmytrodanylyk/blob/gh-pages/articles/volley-part-2.md
