@@ -448,9 +448,14 @@ Here is an example of how you can deal with it
             .useDefaultLoader()
             .clearCache();
 ```
+
+[Full source code on github][7]
+
+
   [1]: https://developers.google.com/events/io/sessions/325304728
   [2]: http://dmytrodanylyk.github.io/dmytrodanylyk
   [3]: https://github.com/dmytrodanylyk/dmytrodanylyk/blob/gh-pages/articles/volley-part-2.md
   [4]: http://www.oodesign.com/singleton-pattern.html
   [5]: http://www.oodesign.com/strategy-pattern.html
   [6]: http://goo.gl/dScAvf
+  [7]: https://github.com/yakivmospan/volley-request-manager
