@@ -386,7 +386,7 @@ public class RequestController {
     //...
 }
 ```
-Now all puzzle parts are ready. After putting them together you will get something like this
+Now all puzzle parts are ready. After putting them together you will get simple and reusable interface
 ```java
 RequestManager.initializeWith(getApplicationContext());
 
