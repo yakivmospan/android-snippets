@@ -443,7 +443,7 @@ Here is an example of how you can deal with it
                     mImageListener
             );
             
-//clear chache
+//clear cache
  RequestManager
             .loader()
             .useDefaultLoader()
