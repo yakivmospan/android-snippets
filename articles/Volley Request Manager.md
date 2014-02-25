@@ -138,11 +138,11 @@ public class RequestManager {
         mRequestQueue.add(request);
     }
     
-    //to reuse this manager in another project you will need to remove or change your old
+    //to reuse this manager in another project you will have to remove or change your old
     //requests from here
 }
 ```
-To create new\remove old\change current requests you will need to change your `RequestManager`. This is not the best practice and just not comfortable.
+To create new\remove old\change current requests you will have to change your `RequestManager`. This is not the best practice and just not comfortable.
 
 Thats why I decided to encapsulate methods and make their behavior as objects ([Strategy][5] design pattern).
 
