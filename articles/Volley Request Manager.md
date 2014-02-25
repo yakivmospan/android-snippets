@@ -14,7 +14,12 @@ On mine 3 years of developing practice every second project had feature, like Ht
  - Factory that will help to create your own Image Loader
  - Possibility to clear Image Loader memory cache
 
+Usage examples :
+
 ```java
+//Initialize manager
+RequestManager.initializeWith(contex);
+
 //Queue using custom listener
 RequestManager.queue()
         .useBackgroundQueue()
@@ -418,23 +423,6 @@ public class RequestController {
     //...
 }
 ```
-Now when all puzzle parts are ready we can put them together. Lets look on it
-```java
-RequestManager.initializeWith(getApplicationContext());
-
-//Queue using custom listener
-RequestManager.queue()
-        .useBackgroundQueue()
-        .addRequest(new TestJsonRequest(), mRequestCallback)
-        .start();
-        
-//Queue using default volley Response and Error listener
-RequestManager
-        .queue()
-        .useBackgroundQueue()
-        .addRequest(new TestJsonRequest(), mListener, mErrorListener)
-        .start();
-```
 
 ### Image Loader
 Like in Volley Request creation, queues problems are present in Image Loader. So I've added `ImageQueueBuilder` and `ImageLoaderController` like I did for Requests. There is only one different between them - `BitmapLruCache` interface .
@@ -460,26 +448,6 @@ public class ImageLoaderController {
 }
 ```
 `BitmapLruCache` is responsible for memory caching. It is pretty useful to be able to release memory and furthermore from large `Bitmap`.  
-
-Here is an example of how you can deal with it 
-```java
-
-//load image
- RequestManager
-            .loader()
-            .useDefaultLoader()
-            .obtain()
-            .get(
-                    "http://farm6.staticflickr.com/5475/10375875123_75ce3080c6_b.jpg",
-                    mImageListener
-            );
-            
-//clear cache
- RequestManager
-            .loader()
-            .useDefaultLoader()
-            .clearCache();
-```
 
   [1]: https://developers.google.com/events/io/sessions/325304728
   [2]: http://dmytrodanylyk.github.io/dmytrodanylyk
