@@ -219,9 +219,9 @@ public class TestJsonRequest extends RequestInterface {
 ```
 ### Background
 
-Volley deliver result from Requests into Callbacks that are handled in UI thread(more about this you can find [here][6]), this is not good especially when you need to parse and/or save Request result. 
+Volley deliver result from Requests into Callbacks that are triggered in UI thread(more about this you can find [here][6]), this is not good especially when you need to parse and/or save Request result. 
 
-Thats why I've added default Queue that always handle result in background thread. But then I've meet another problem - updating UI after background process. To do this we need to trigger `runOnUiThread()` or use `Handler`
+Thats why I've added default Queue that always deliver result in background thread. But then I've meet another problem - updating UI after background process. To do this we need to trigger `runOnUiThread()` or use `Handler`
 
 ```java
 private Response.Listener mListener = new Response.Listener<JSONObject>() {
