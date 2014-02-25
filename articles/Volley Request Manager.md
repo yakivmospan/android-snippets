@@ -14,7 +14,7 @@ On mine 3 years of developing practice every second project had feature, like Ht
  - Factory that will help to create your own Image Loader
  - Possibility to clear Image Loader memory cache
 
-Why I choose Volley? Because it is simple, powerfool, extendable, with built-in memory and disk cache library from google.
+Why I choose Volley and not OKHttp(or another Http lib) instead? Because it is simple, powerfool, extendable, with built-in memory and disk cache library from [Google][8].
 
 Usage examples :
 
@@ -458,3 +458,4 @@ public class ImageLoaderController {
   [5]: http://www.oodesign.com/strategy-pattern.html
   [6]: http://goo.gl/dScAvf
   [7]: https://github.com/yakivmospan/volley-request-manager
+  [8]: http://en.wikipedia.org/wiki/Google
