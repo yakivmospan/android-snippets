@@ -14,6 +14,37 @@ On mine 3 years of developing practice every second project had feature, like Ht
  - Factory that will help to create your own Image Loader
  - Possibility to clear Image Loader memory cache
 
+```java
+//Queue using custom listener
+RequestManager.queue()
+        .useBackgroundQueue()
+        .addRequest(new TestJsonRequest(), mRequestCallback)
+        .start();
+        
+//Queue using default volley Response and Error listener
+RequestManager
+        .queue()
+        .useBackgroundQueue()
+        .addRequest(new TestJsonRequest(), mListener, mErrorListener)
+        .start();
+        
+//load image
+ RequestManager
+            .loader()
+            .useDefaultLoader()
+            .obtain()
+            .get(
+                    "http://farm6.staticflickr.com/5475/10375875123_75ce3080c6_b.jpg",
+                    mImageListener
+            );
+            
+//clear cache
+ RequestManager
+            .loader()
+            .useDefaultLoader()
+            .clearCache();        
+```
+
 ### Queue
 
 Look on this great and easy to understand article from [Dmytro Danylyk][2] - [Volley Part 2 - Application Model][3]. As he said if you want to control your request and queues from different parts of application, you need to use [Singleton][4].
