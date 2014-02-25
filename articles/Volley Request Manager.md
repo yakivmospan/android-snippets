@@ -14,6 +14,8 @@ On mine 3 years of developing practice every second project had feature, like Ht
  - Factory that will help to create your own Image Loader
  - Possibility to clear Image Loader memory cache
 
+Why I choose Volley? Because it is simple, powerfool, extendable, with built-in memory and disk cache library from google.
+
 Usage examples :
 
 ```java
