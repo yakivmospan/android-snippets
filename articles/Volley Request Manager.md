@@ -427,7 +427,7 @@ public class RequestController {
 ```
 
 ### Image Loader
-Like in Volley Request creation, queues problems are present in Image Loader. So I've added `ImageQueueBuilder` and `ImageLoaderController` like I did for Requests. There is only one different between them - `BitmapLruCache` interface .
+Like in Volley Request creation, queues problems are present in Image Loader. So I've added `ImageQueueBuilder` and `ImageLoaderController` like I did for Requests. There is only one difference between them - `BitmapLruCache` interface .
 ```java
 public class ImageLoaderController {
 
