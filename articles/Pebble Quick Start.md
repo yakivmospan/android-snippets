@@ -6,4 +6,4 @@
 
 ## Pebble Applications vs Android
 
-## Android Pebble Tips
+## Tips for Android Pebble
