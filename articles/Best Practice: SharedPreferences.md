@@ -24,6 +24,7 @@ SharedPreferences.Editor edit = preferences.edit();
 [Android guide.][2]
 
 ###Use Cases:
+- 
 
 
   [1]: http://developer.android.com/reference/android/content/SharedPreferences.html
