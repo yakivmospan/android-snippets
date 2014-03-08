@@ -146,7 +146,7 @@ public class MigrationManager {
 }
 ```
 
-- SharedPreferences are stored in an xml file in the app data folder
+- `SharedPreferences` are stored in an xml file in the app data folder
 
 ```java
 // yours preferences
