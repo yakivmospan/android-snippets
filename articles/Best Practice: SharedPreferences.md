@@ -117,11 +117,15 @@ third.getString("key", null)
 
 ```java
 public class MigrationManager {
-
     private final static String KEY_PREFERENCES_VERSION = "key_preferences_version";
     private final static int PREFERENCES_VERSION = 2;
-    
-    public static void checkPreferences(SharedPreferences thePreferences) {
+
+    public static void migrate(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences("pref", Context.MODE_PRIVATE);
+        checkPreferences(preferences);
+    }
+
+    private static void checkPreferences(SharedPreferences thePreferences) {
         final double oldVersion = thePreferences.getInt(KEY_PREFERENCES_VERSION, 1);
 
         if (oldVersion < PREFERENCES_VERSION) {
