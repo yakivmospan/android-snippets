@@ -145,6 +145,17 @@ public class MigrationManager {
     }
 }
 ```
+
+- SharedPreferences are stored in an xml file in the app data folder
+
+```java
+// yours preferences
+/data/data/YOUR_PACKAGE_NAME/shared_prefs/YOUR_PREFS_NAME.xml
+
+// default preferences
+/data/data/YOUR_PACKAGE_NAME/shared_prefs/YOUR_PACKAGE_NAME_preferences.xml
+```
+
 [Android guide.][5]
 
 ### Sample Code
