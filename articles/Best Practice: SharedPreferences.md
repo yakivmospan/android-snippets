@@ -4,8 +4,8 @@ Android provides many ways of storing application data. One of those ways leads 
 All logic are based only on three simple classes:
 
 - [SharedPreferences][1]
-- [SharedPreferences.Editor][3]
-- [SharedPreferences.OnSharedPreferenceChangeListener][4]
+- [SharedPreferences.Editor][2]
+- [SharedPreferences.OnSharedPreferenceChangeListener][3]
 
 ### SharedPreferences
 
@@ -69,7 +69,7 @@ editor.apply();
 
 ### Performance & Tips
 
-- `SharedPreferences` in an Singleton object so you can easily get as many references as you want, it opens file only when you call `getSharedPreferences` first time, or create only one reference for it.
+- `SharedPreferences` is a [Singleton][4] object so you can easily get as many references as you want, it opens file only when you call `getSharedPreferences` first time, or create only one reference for it.
 
 ```java
 // There are 1000 String values in preferences
@@ -82,6 +82,16 @@ SharedPreferences second = context.getSharedPreferences("com.example.app", Conte
 
 SharedPreferences third = context.getSharedPreferences("com.example.app", Context.MODE_PRIVATE);
 // call time = 0 milliseconds
+```
+
+- As `SharedPreferences` is a [Singleton][4] object you can change any of It's instances and not be scared that their data will be different
+
+```java
+first.edit().putInt("key",15).commit();
+
+int firstValue = first.getInt("key",0)); // firstValue is 15
+int secondValue = second.getInt("key",0)); // secondValue is also 15
+
 ```
 
 - When you call `get` method first time it parses value by key and adds this value to the map. So for second call it just gets it from map, without parsing.
@@ -101,10 +111,35 @@ third.getString("key", null)
 
 ```
 
-[Android guide.][2]
+- Remember the larger the Preference object is the longer `get`, `commit`, `apply`, `remove` and `clear` operations will be. So it's highly recommended to separate your data in different small objects.
+
+- Your Preferences **will not be removed** after Application update. So there are cases when you need to create some migration scheme. For example you have Application that parse local JSON in start of application, to do this only after first start you decided to save boolean flag `wasLocalDataLoaded`. After some time you updated that JSON and released new application version. Users will update their applications but they will not load new JSON because you already done it in first application version. 
+
+```java
+public class MigrationManager {
+
+    private final static String KEY_PREFERENCES_VERSION = "key_preferences_version";
+    private final static int PREFERENCES_VERSION = 2;
+    
+    public static void checkPreferences(SharedPreferences thePreferences) {
+        final double oldVersion = thePreferences.getInt(KEY_PREFERENCES_VERSION, 1);
+
+        if (oldVersion < PREFERENCES_VERSION) {
+            final SharedPreferences.Editor edit = thePreferences.edit();
+            edit.clear();
+            edit.putInt(KEY_PREFERENCES_VERSION, currentVersion);
+            edit.commit();
+        }
+    }
+}
+```
+
+
+[Android guide.][5]
 
 
   [1]: http://developer.android.com/reference/android/content/SharedPreferences.html
-  [2]: http://developer.android.com/guide/topics/data/data-storage.html#pref
-  [3]: http://developer.android.com/reference/android/content/SharedPreferences.Editor.html
-  [4]: http://developer.android.com/reference/android/content/SharedPreferences.OnSharedPreferenceChangeListener.html
+  [2]: http://developer.android.com/reference/android/content/SharedPreferences.Editor.html
+  [3]: http://developer.android.com/reference/android/content/SharedPreferences.OnSharedPreferenceChangeListener.html
+  [4]: http://www.oodesign.com/singleton-pattern.html
+  [5]: http://developer.android.com/guide/topics/data/data-storage.html#pref
