@@ -38,6 +38,8 @@ preferences.unregisterOnSharedPreferenceChangeListener(mListener);
 ```
 ### Editor
 
+`SharedPreferences.Editor` is an Interface used for modifying values in a `SharedPreferences` object. All changes you make in an editor are batched, and not copied back to the original `SharedPreferences` until you call commit() or apply()
+
 ### Performance test
 
 - `SharedPreferences` in an Singleton object so you can easily get as many references as you want, it opens file only when you call `getSharedPreferences` first time, or create only one reference for it.
