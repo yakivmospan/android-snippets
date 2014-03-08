@@ -145,9 +145,11 @@ public class MigrationManager {
     }
 }
 ```
-
-
 [Android guide.][5]
+
+### Sample Code
+
+
 
 
   [1]: http://developer.android.com/reference/android/content/SharedPreferences.html
