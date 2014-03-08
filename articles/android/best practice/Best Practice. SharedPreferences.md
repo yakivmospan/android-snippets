@@ -121,7 +121,7 @@ third.getString("key", null)
 
 - Remember the larger the Preference object is the longer `get`, `commit`, `apply`, `remove` and `clear` operations will be. So it's highly recommended to separate your data in different small objects.
 
-- Your Preferences **will not be removed** after Application update. So there are cases when you need to create some migration scheme. For example you have Application that parse local JSON in start of application, to do this only after first start you decided to save boolean flag `wasLocalDataLoaded`. After some time you updated that JSON and released new application version. Users will update their applications but they will not load new JSON because you already done it in first application version. 
+- Your Preferences **will not be removed** after Application update. So there are cases when you need to create some migration scheme. For example you have Application that parse local JSON in start of application, to do this only after first start you decided to save boolean flag `wasLocalDataLoaded`. After some time you updated that JSON and released new application version. Users will update their applications but they will not load new JSON because they already done it in first application version. 
 
 ```java
 public class MigrationManager {
