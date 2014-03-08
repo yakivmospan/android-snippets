@@ -35,6 +35,14 @@ preferences.registerOnSharedPreferenceChangeListener(mListener);
 
 //remove on Change Listener
 preferences.unregisterOnSharedPreferenceChangeListener(mListener);
+
+// listener example
+SharedPreferences.OnSharedPreferenceChangeListener mOnSharedPreferenceChangeListener
+        = new SharedPreferences.OnSharedPreferenceChangeListener() {
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+    }
+};
 ```
 ### Editor
 
