@@ -67,7 +67,7 @@ editor.remove("key");
 editor.clear();
 
 // commit your putted values to the SharedPreferences object synchronously
-// returns true if successe
+// returns true if success
 boolean result = editor.commit();
 
 // do the same as commit() but asynchronously (faster but not safely)
