@@ -21,14 +21,14 @@ SharedPreferences preferences = context.getSharedPreferences("com.example.app", 
 
 // get values from Map
 preferences.getBoolean("key", defaultValue)
-preferences.get...("key", defaultValue)
+preferences.get..("key", defaultValue)
 
 // you can get all Map but be careful you must not modify the collection returned by this
 // method, or alter any of its contents.
 Map<String, ?> all = preferences.getAll();
 
 // get Editor object
-SharedPreferences.Editor edit = preferences.edit();
+SharedPreferences.Editor editor = preferences.edit();
 
 //add on Change Listener
 preferences.registerOnSharedPreferenceChangeListener(mListener);
@@ -40,7 +40,34 @@ preferences.unregisterOnSharedPreferenceChangeListener(mListener);
 
 `SharedPreferences.Editor` is an Interface used for modifying values in a `SharedPreferences` object. All changes you make in an editor are batched, and not copied back to the original `SharedPreferences` until you call commit() or apply()
 
-### Performance test
+- Use simple interface to put values in `Editor`
+- Save values synchronous with `commit()` or asynchronous with `apply` which is faster. In fact of using different threads using `commit()` is safer. Thats why I prefer to use **`commit()`**.
+- Remove single value with `remove()` or clear all values with `clear()`
+
+```java
+// get Editor object
+SharedPreferences.Editor editor = preferences.edit();
+
+// put values in editor
+editor.putBoolean("key", value);
+editor.put..("key", value);
+
+// remove single value by key
+editor.remove("key");
+
+// remove all values
+editor.clear();
+
+// commit your putted values to the SharedPreferences object synchronously
+// returns true if successe
+boolean result = editor.commit();
+
+// do the same as commit() but asynchronously (faster but not safely)
+// returns nothing
+editor.apply();
+```
+
+### Performance & Tips
 
 - `SharedPreferences` in an Singleton object so you can easily get as many references as you want, it opens file only when you call `getSharedPreferences` first time, or create only one reference for it.
 
