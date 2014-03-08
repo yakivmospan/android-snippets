@@ -23,6 +23,10 @@ SharedPreferences preferences = context.getSharedPreferences("com.example.app", 
 preferences.getBoolean("key", defaultValue)
 preferences.get...("key", defaultValue)
 
+// you can get all Map but be careful you must not modify the collection returned by this
+// method, or alter any of its contents.
+Map<String, ?> all = preferences.getAll();
+
 // get Editor object
 SharedPreferences.Editor edit = preferences.edit();
 
