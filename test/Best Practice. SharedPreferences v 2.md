@@ -53,4 +53,4 @@ SharedPreferences.OnSharedPreferenceChangeListener mOnSharedPreferenceChangeList
   [3]: http://developer.android.com/reference/android/content/SharedPreferences.OnSharedPreferenceChangeListener.html
   [4]: http://www.oodesign.com/singleton-pattern.html
   [5]: http://developer.android.com/guide/topics/data/data-storage.html#pref
-  [6]: https://www.dropbox.com/s/60y21ymwc475r88/Article%20Header%20with%20Canvas.png
+  [6]: https://raw.github.com/yakivmospan/yakivmospan/master/images/Article%20Header%20with%20Canvas.png
