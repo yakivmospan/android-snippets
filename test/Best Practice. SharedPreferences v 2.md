@@ -1,6 +1,6 @@
 ![enter image description here][6]
 
-## Best Practice: SharedPreferences
+### Best Practice: SharedPreferences
 
 Android provides many ways of storing application data. One of those ways leads us to the **SharedPreferences** object which is used to store private primitive data in key-value pairs.
 
