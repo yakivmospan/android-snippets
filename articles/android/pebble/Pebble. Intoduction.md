@@ -1,9 +1,3 @@
-## What is Pebble
+![Thumbnail][0]
 
-## Pebble in action
-
-## Pebble & Android
-
-## Pebble Applications vs Android
-
-## Tips for Android Pebble
+  [0]: https://raw.github.com/yakivmospan/yakivmospan/master/images/pebble-introduction-300-dpi.png
