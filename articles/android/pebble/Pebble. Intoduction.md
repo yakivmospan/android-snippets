@@ -28,15 +28,21 @@ Lets look closer. If you love skiing like I do than you know how hard is to get 
 Pebble opens the door into the world of Comfort and new Possibilities.
 
 ### Development
-As I told above, Pebble supports Android and iOS. It provides you :
 
-- 
+To start developing for Pebble you simple need to :
 
-Their documentation can be found [here][3].
+- Meet Pebble Developers [site][3]
+- Download [Pebble SDK][4]
+- Download Pebble application from Market ([Android][5], [iOS][6])
+- Go throw some samples at [GitHub][7]
 
 
   [1]: http://en.wikipedia.org/wiki/Smartwatch
   [2]: http://en.wikipedia.org/wiki/Pebble_%28watch%29
   [3]: https://developer.getpebble.com/
+  [4]: https://developer.getpebble.com/2/getting-started/
+  [5]: https://play.google.com/store/apps/details?id=com.getpebble.android
+  [6]: http://www.apple.com/itunes/affiliates/download/
+  [7]: https://github.com/search?q=pebble&ref=cmdform
 
   [0]: https://raw.github.com/yakivmospan/yakivmospan/master/images/pebble-introduction.png
