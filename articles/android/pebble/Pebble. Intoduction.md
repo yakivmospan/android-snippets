@@ -4,7 +4,7 @@
 
 Day by day technology is growing up and is doing this really fast. Of course it didn't forget about wearable devices like [smartwatches][1]. I was always thinking that smartwatch is not the best idea. Who wants watch that need to be charged every day? But [Pebble][2] made me to believe in them.
 
-#### Why Pebble ?
+### Why Pebble ?
 
 - Simple in use
 - Pixel e-paper display
@@ -14,7 +14,7 @@ Day by day technology is growing up and is doing this really fast. Of course it 
 - Cross platforming - works with Android and iOS
 - A lot of possibilities for developers
 
-#### Usage
+### Usage
 
 - Alarm manger
 - Read messages
@@ -27,7 +27,7 @@ Lets look closer. If you love skiing like I do than you know how hard is to get 
 
 Pebble opens the door into the world of Comfort and new Possibilities.
 
-#### Development
+### Development
 As I told above, Pebble supports Android and iOS. It provides you :
 
 - 
