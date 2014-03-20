@@ -1,6 +1,6 @@
 ![Thumbnail][0]
 
-### Pebble: Introduction
+### Pebble: Little Helper
 
 Day by day technology is growing up and is doing this really fast. Of course it didn't forget about wearable devices like [smartwatches][1]. I was always thinking that smartwatch is not the best idea. Who wants watch that need to be charged every day? But [Pebble][2] made me to believe in them.
 
@@ -36,6 +36,11 @@ To start developing for Pebble you simple need to :
 - Download Pebble application from Market ([Android][5], [iOS][6])
 - Go throw some samples at [GitHub][7]
 
+Meet any troubles? You can always take care of them here :
+
+- [Pebble Forum][8]
+- [Stack Overflow][9]
+
 
   [1]: http://en.wikipedia.org/wiki/Smartwatch
   [2]: http://en.wikipedia.org/wiki/Pebble_%28watch%29
@@ -44,5 +49,7 @@ To start developing for Pebble you simple need to :
   [5]: https://play.google.com/store/apps/details?id=com.getpebble.android
   [6]: http://www.apple.com/itunes/affiliates/download/
   [7]: https://github.com/search?q=pebble&ref=cmdform
+  [8]: https://forums.getpebble.com/categories/developer-discussion
+  [9]: http://stackoverflow.com/questions/tagged/pebble-watch
 
-  [0]: https://raw.github.com/yakivmospan/yakivmospan/master/images/pebble-introduction.png
+  [0]: https://raw.github.com/yakivmospan/yakivmospan/master/images/pebble-little-helper.png
