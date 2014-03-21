@@ -25,7 +25,9 @@ Day by day technology is growing up and is doing this really fast. Of course it 
 
 Lets look closer :
 
+- I don't like to carry a lot of staff with me. Thats why I use only my phone to listen music or read books. And every day in bus, metro or while riding the bike I was needed to take it out from pocket every time I wanted another track. That was anoing. And now all I need is to touch my hand.
 - If you love skiing like I do than you know how hard is to get your phone from pocket at the mountain. And with Pebble you can even track your run statistic without doing that.
+
 
 Pebble opens the door into the world of Comfort and new Possibilities.
 
