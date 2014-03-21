@@ -16,6 +16,8 @@ Day by day technology is growing up and is doing this really fast. Of course it 
 - Cross platforming - works with Android and iOS
 - A lot of possibilities for developers
 
+![Pebble Icon Bike][11]
+
 ### Usage
 
 - Alarm manger
@@ -60,3 +62,4 @@ Meet any troubles? You can always take care of them here :
 
   [0]: https://raw.github.com/yakivmospan/yakivmospan/master/images/pebble-little-helper.png
   [10]: https://raw.github.com/yakivmospan/yakivmospan/master/images/pebble-icon.jpg
+  [11]: https://raw.github.com/yakivmospan/yakivmospan/master/images/pebble-icon-bike.jpg
