@@ -23,7 +23,9 @@ Day by day technology is growing up and is doing this really fast. Of course it 
 - Play games
 - You can use it as speedometer while running or riding or even skiing
 
-Lets look closer. If you love skiing like I do than you know how hard is to get your phone from pocket at the mountain. And with Pebble you can even track your run statistic without doing that.
+Lets look closer :
+
+- If you love skiing like I do than you know how hard is to get your phone from pocket at the mountain. And with Pebble you can even track your run statistic without doing that.
 
 Pebble opens the door into the world of Comfort and new Possibilities.
 
