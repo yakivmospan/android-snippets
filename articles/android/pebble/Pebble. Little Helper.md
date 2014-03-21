@@ -4,6 +4,8 @@
 
 Day by day technology is growing up and is doing this really fast. Of course it didn't forget about wearable devices like [smartwatches][1]. I was always thinking that smartwatch is not the best idea. Who wants watch that need to be charged every day? But [Pebble][2] made me to believe in them.
 
+![Pebble Icon][10]
+
 ### Why Pebble ?
 
 - Simple in use
@@ -57,3 +59,4 @@ Meet any troubles? You can always take care of them here :
   [9]: http://stackoverflow.com/questions/tagged/pebble-watch
 
   [0]: https://raw.github.com/yakivmospan/yakivmospan/master/images/pebble-little-helper.png
+  [10]: https://raw.github.com/yakivmospan/yakivmospan/master/images/pebble-icon.jpg
