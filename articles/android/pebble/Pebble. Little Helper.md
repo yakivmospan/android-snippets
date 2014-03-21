@@ -34,7 +34,7 @@ To start developing for Pebble you simple need to :
 - Meet Pebble Developers [site][3]
 - Download [Pebble SDK][4]
 - Download Pebble application from Market ([Android][5], [iOS][6])
-- Go throw some samples at [GitHub][7]
+- Go throw some samples on [GitHub][7]
 
 Meet any troubles? You can always take care of them here :
 
