@@ -16,8 +16,6 @@ Day by day technology is growing up and is doing this really fast. Of course it 
 - Cross platforming - works with Android and iOS
 - A lot of possibilities for developers
 
-![Pebble Icon Bike][11]
-
 ### Usage
 
 - Alarm manger
@@ -34,6 +32,8 @@ Lets look closer :
 
 
 Pebble opens the door into the world of Comfort and new Possibilities.
+
+![Pebble Icon Bike][11]
 
 ### Development
 
