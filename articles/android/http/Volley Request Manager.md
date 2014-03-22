@@ -453,7 +453,7 @@ public class ImageLoaderController {
 ```
 `BitmapLruCache` is responsible for memory caching. It is pretty useful to be able to release memory and furthermore from large `Bitmap`.  
 
-  [0]: https://github.com/yakivmospan/yakivmospan/blob/master/images/http-volley-request-manager.png
+  [0]: https://raw.githubusercontent.com/yakivmospan/yakivmospan/master/images/http-volley-request-manager.png
   [1]: https://developers.google.com/events/io/sessions/325304728
   [2]: http://dmytrodanylyk.github.io/dmytrodanylyk
   [3]: https://github.com/dmytrodanylyk/dmytrodanylyk/blob/gh-pages/articles/volley-part-2.md
