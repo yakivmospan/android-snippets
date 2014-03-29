@@ -24,7 +24,25 @@ Library consists of two simple packages: **http** and **utils**. They are indepe
 
 Include [library project][2] or just copy component that you need from **http** package.
 
+```java
+// init component that you need
+ImageManager.initializeWith(getApplicationContext());
+RequestManager.initializeWith(getApplicationContext());
 
+// create request
+Request request = new JsonObjectRequest(
+        Request.Method.GET,
+        "request url here",
+        null,
+        mListener,
+        mErrorListener);
+        
+// process request with default queue      
+RequestManager.queue().doRequest(request);
+
+// process request with custom queue      
+RequestManager.queue().doRequest(request, customQueue);
+```
 
   [1]: https://github.com/yakivmospan/volley-request-manager-lite
   [2]: https://github.com/yakivmospan/yakivmospan/blob/master/articles/android/http/Volley%20Request%20Manager.md
