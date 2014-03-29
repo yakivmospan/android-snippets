@@ -22,11 +22,10 @@ Library consists of two simple packages: **http** and **utils**. They are indepe
 
 ### Usage
 
-Include [library project][2] or just copy component that you need from **http** package.
+Include [library][2] or just copy component that you need from **http** package in your project.
 
 ```java
-// init component that you need
-ImageManager.initializeWith(getApplicationContext());
+// init component that for request processing
 RequestManager.initializeWith(getApplicationContext());
 
 // create request
@@ -42,6 +41,33 @@ RequestManager.queue().doRequest(request);
 
 // process request with custom queue      
 RequestManager.queue().doRequest(request, customQueue);
+```
+
+```java
+// init component that for image loading
+ImageManager.initializeWith(getApplicationContext());
+
+// load image with defaul ImageLoader
+ImageManager.loader().doLoad(
+        "http://farm6.staticflickr.com/5475/10375875123_75ce3080c6_b.jpg",
+        mImageListener);
+        
+// load image with cusmot ImageLoader
+ImageManager.loader().doLoad(
+        "http://farm6.staticflickr.com/5475/10375875123_75ce3080c6_b.jpg",
+        mImageListener,
+        customImageLoader);
+        
+// load image with NetworkImageView
+NetworkImageView view = new NetworkImageView(context);
+
+ImageManager.loader().doLoad(
+        "http://farm6.staticflickr.com/5475/10375875123_75ce3080c6_b.jpg",
+        view);        
+  
+ view.view.setImageUrl(
+        "http://farm6.staticflickr.com/5475/10375875123_75ce3080c6_b.jpg",
+        ImageManager.loader.instance()); // to use default ImageLoader       
 ```
 
   [1]: https://github.com/yakivmospan/volley-request-manager-lite
