@@ -6,7 +6,7 @@ In my [Volley Request Manager][2] article I've described model that covers a lot
 
 - Reusable
 - So simple as possible
-- With possibility to include separated HTTP Client or Image Loader
+- With possibility to include HTTP Client and Image Loader or only one of them
 - Still with possibilities to use different Queues and Image Loaders
 
 ### Description
