@@ -1,0 +1,30 @@
+### Volley Request Manager - Lite
+
+[Full source code on github][1]
+
+In my [Volley Request Manager][2] article I've described model that covers a lot of stuff. But in practice you need only half of it or even less. So I've decided to create this version, that is :
+
+- Reusable
+- So simple as possible
+- With possibility to include separated HTTP Client or Image Loader
+- Still with possibilities to use different Queues and Image Loaders
+
+### Description
+
+Library consists of two simple packages: **http** and **utils**. They are independent.
+
+**http**  contains only two independent classes :
+
+- `ImageManager` - for image loading
+- `RequestManager` - for requests processing
+
+**utils** contains classes that will help you to create your own `Requests`, `Queues` or `ImageLoaders`. You can use them if you wish
+
+### Usage
+
+Include [library project][2] or just copy component that you need from **http** package.
+
+
+
+  [1]: https://github.com/yakivmospan/volley-request-manager-lite
+  [2]: https://github.com/yakivmospan/yakivmospan/blob/master/articles/android/http/Volley%20Request%20Manager.md
