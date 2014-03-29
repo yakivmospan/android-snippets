@@ -70,5 +70,49 @@ ImageManager.loader().doLoad(
         ImageManager.loader.instance()); // to use default ImageLoader       
 ```
 
+### Tips
+
+- Create `HttpUtils` class to hold all your url, headers creation methods in one place
+
+```java
+public class HttpUtils {
+
+    public static String createTestUrl() {
+        Uri.Builder uri = new Uri.Builder();
+        uri.scheme("http");
+        uri.authority("httpbin.org");
+        uri.path("get");
+        uri.appendQueryParameter("name", "Jon Doe");
+        uri.appendQueryParameter("age", "21");
+
+        return uri.build().toString();
+    }
+}
+```
+
+- Create `HttpFactory` class to hold all your reusable requests
+
+```java
+public class HttpFactory {
+
+    public static void createTestRequest(Response.Listener<JSONObject> listener,
+            Response.ErrorListener errorListener) {
+        Request request = new JsonObjectRequest(
+                Request.Method.GET,
+                HttpUtils.createTestUrl(),
+                null,
+                listener,
+                errorListener);
+        RequestManager.queue().doRequest(request);
+    }
+
+    public static void loadImageWithDefaultStub(String url, NetworkImageView view) {
+        view.setDefaultImageResId(R.drawable.ic_launcher);
+        ImageManager.loader().doLoad(
+                url,
+                view);
+    }
+}
+```
   [1]: https://github.com/yakivmospan/volley-request-manager-lite
   [2]: https://github.com/yakivmospan/yakivmospan/blob/master/articles/android/http/Volley%20Request%20Manager.md
