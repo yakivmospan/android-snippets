@@ -27,7 +27,7 @@ Library consists of two simple packages: **http** and **utils**. They are indepe
 Include [library][2] or just copy component that you need from **http** package in your project.
 
 ```java
-// init component that for request processing
+// init component for request processing
 RequestManager.initializeWith(getApplicationContext());
 
 // create request
