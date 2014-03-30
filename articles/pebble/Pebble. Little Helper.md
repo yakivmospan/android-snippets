@@ -62,7 +62,7 @@ Meet any troubles? You can always take care of them here :
   [8]: https://forums.getpebble.com/categories/developer-discussion
   [9]: http://stackoverflow.com/questions/tagged/pebble-watch
 
-  [0]: https://raw.github.com/yakivmospan/yakivmospan/master/images/pebble-little-helper.png
-  [10]: https://raw.github.com/yakivmospan/yakivmospan/master/images/pebble-icon.jpg
-  [11]: https://raw.github.com/yakivmospan/yakivmospan/master/images/pebble-icon-bike.jpg
-  [12]: https://raw.github.com/yakivmospan/yakivmospan/master/images/pebble-icon-2.jpg
+  [0]: https://raw.github.com/yakivmospan/yakivmospan/master/assets/images/articles/pebble-little-helper.png
+  [10]: https://raw.github.com/yakivmospan/yakivmospan/master/assets/images/articles/pebble-icon.jpg
+  [11]: https://raw.github.com/yakivmospan/yakivmospan/master/assets/images/articles/pebble-icon-bike.jpg
+  [12]: https://raw.github.com/yakivmospan/yakivmospan/master/assets/images/articles/pebble-icon-2.jpg
