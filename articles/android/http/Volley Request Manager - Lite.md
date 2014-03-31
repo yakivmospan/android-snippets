@@ -42,7 +42,7 @@ RequestManager.queue().add(request);
 ```
 
 ```java
-// init component that for image loading
+// init component for image loading
 ImageManager.initializeWith(getApplicationContext());
 
 // load image with default ImageLoader
@@ -53,7 +53,7 @@ ImageManager.loader().get(
 // load image with NetworkImageView
 NetworkImageView view = new NetworkImageView(context);
   
-view.view.setImageUrl(
+view.setImageUrl(
         "http://farm6.staticflickr.com/5475/10375875123_75ce3080c6_b.jpg",
         ImageManager.loader()); // to use default ImageLoader
 ```
@@ -91,14 +91,14 @@ public class HttpFactory {
                 null,
                 listener,
                 errorListener);
-        RequestManager.queue().doRequest(request);
+        RequestManager.queue().add(request);
     }
 
     public static void loadImageWithDefaultStub(String url, NetworkImageView view) {
         view.setDefaultImageResId(R.drawable.ic_launcher);
-        ImageManager.loader().doLoad(
+        view.setImageUrl(
                 url,
-                view);
+                ImageManager.loader());
     }
 }
 ```
