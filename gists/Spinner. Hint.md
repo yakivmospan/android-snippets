@@ -10,6 +10,7 @@ objects.add(secondItem);
 objects.add(hint);
 
 HintAdapter adapter = new HintAdapter(context, objects, android.R.layout.simple_spinner_item);
+adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 Spinner spinnerFilmType = (Spinner) findViewById(R.id.spinner);
 spinner.setAdapter(adapter);
