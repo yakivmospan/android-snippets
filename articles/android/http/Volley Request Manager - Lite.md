@@ -38,14 +38,14 @@ Request request = new JsonObjectRequest(
         mErrorListener);
         
 // process request with default queue      
-RequestManager.queue().doRequest(request);
+RequestManager.queue().add(request);
 ```
 
 ```java
 // init component that for image loading
 ImageManager.initializeWith(getApplicationContext());
 
-// load image with defaul ImageLoader
+// load image with default ImageLoader
 ImageManager.loader().get(
         "http://farm6.staticflickr.com/5475/10375875123_75ce3080c6_b.jpg",
         mImageListener);
