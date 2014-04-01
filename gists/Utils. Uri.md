@@ -1,6 +1,6 @@
 ### Utils: Uri
 
- working with file system we often need to get path from [Uri][1] object. 
+While working with file system we often need to get path from [Uri][1] object. 
 
 As in Android 4.4 KitKat was added new Document picker we need to use 19 or later SDK version.
 
