@@ -23,7 +23,7 @@ public class AuthRequest extends JsonObjectRequest {
         return createBasicAuthHeader("user", "passwd");
     }
 
-    Map<String, String> createBasicAuthHeader(String username, String password) {
+    private Map<String, String> createBasicAuthHeader(String username, String password) {
         Map<String, String> headerMap = new HashMap<String, String>();
 
         String credentials = username + ":" + password;
