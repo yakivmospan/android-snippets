@@ -20,16 +20,15 @@ public class AuthRequest extends JsonObjectRequest {
 
     @Override
     public Map<String, String> getHeaders() throws AuthFailureError {
-        return createBasicAuthHeader("user", "passwd");
+        return createBasicAuthHeader("user", "password");
     }
 
-    private Map<String, String> createBasicAuthHeader(String username, String password) {
+    Map<String, String> createBasicAuthHeader(String username, String password) {
         Map<String, String> headerMap = new HashMap<String, String>();
 
         String credentials = username + ":" + password;
-        String base64EncodedCredentials =
-                Base64.encodeToString(credentials.getBytes(), Base64.NO_WRAP);
-        headerMap.put("Authorization", "Basic " + base64EncodedCredentials);
+        String encodedCredentials = Base64.encodeToString(credentials.getBytes(), Base64.NO_WRAP);
+        headerMap.put("Authorization", "Basic " + encodedCredentials);
 
         return headerMap;
     }
