@@ -1,6 +1,6 @@
 ### Utils: Keyboard
 
-Some times we need to hide/show keyboard after some actions. This class will help to do this :
+Some times we need to hide/show keyboard after some actions. This class will help us to do this :
 
 ```java
 public class KeyboardUtils {
