@@ -10,7 +10,7 @@
 - [Utils. Uri][5]
 - [Volley: Authorization][6]
 - [Spinner: Hint][7]
-
+- [Utils: Keyboard][8]
  
 
 
@@ -21,3 +21,4 @@
   [5]: https://github.com/yakivmospan/yakivmospan/blob/master/gists/Utils.%20Uri.md
   [6]: https://github.com/yakivmospan/yakivmospan/blob/master/gists/Volley.%20Authorization.md
   [7]: https://github.com/yakivmospan/yakivmospan/edit/master/gists/Spinner.%20Hint.md
+  [8]: https://github.com/yakivmospan/yakivmospan/blob/master/gists/Utils.%20Keyboard.md
