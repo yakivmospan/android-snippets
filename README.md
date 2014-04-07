@@ -7,9 +7,9 @@
 
 ### Gists
 
-- [L][5]
+- [Utils: L][5]
 - [Utils: Keyboard][6]
-- [Utils. Uri][7]
+- [Utils: Uri][7]
 - [Volley: Authorization][8]
 - [Spinner: Hint][9]
  
