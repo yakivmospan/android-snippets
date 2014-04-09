@@ -27,16 +27,16 @@ public class CacheImageLoader extends ImageLoader {
      * @param imageCache The cache to use as an L1 cache.
      */
 
-    private final BitmapLruCache mMemoryCache;
+    private final MemoryCache mMemoryCache;
     private final Cache mDiskCache;
 
-    public CacheImageLoader(RequestQueue queue, BitmapLruCache memoryCache) {
+    public CacheImageLoader(RequestQueue queue, MemoryCache memoryCache) {
         super(queue, memoryCache);
         mMemoryCache = memoryCache;
         mDiskCache = queue.getCache();
     }
 
-    public BitmapLruCache getMemoryCache() {
+    public MemoryCache getMemoryCache() {
         return mMemoryCache;
     }
     public Cache getDiskCache() {
