@@ -16,13 +16,13 @@ public class Adapter
     }
 
     @Override
-    public Object getItem(int thePosition) {
-        return this.mData.get(thePosition);
+    public Object getItem(int position) {
+        return this.mData.get(position);
     }
 
     @Override
-    public long getItemId(int thePosition) {
-        return thePosition;
+    public long getItemId(int position) {
+        return position;
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
