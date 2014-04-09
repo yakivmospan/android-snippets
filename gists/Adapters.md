@@ -1,3 +1,4 @@
+```java
 public class Adapter
         extends BaseAdapter {
 
@@ -54,3 +55,4 @@ public class Adapter
         View view;
     }
 }
+```
