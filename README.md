@@ -23,4 +23,4 @@
   [6]: https://github.com/yakivmospan/yakivmospan/blob/master/gists/Utils.%20Keyboard.md
   [7]: https://github.com/yakivmospan/yakivmospan/blob/master/gists/Utils.%20Uri.md
   [8]: https://github.com/yakivmospan/yakivmospan/blob/master/gists/Volley.%20Authorization.md
-  [9]: https://github.com/yakivmospan/yakivmospan/edit/master/gists/Spinner.%20Hint.md
+  [9]: https://github.com/yakivmospan/yakivmospan/blob/master/gists/Spinner.%20Hint.md
