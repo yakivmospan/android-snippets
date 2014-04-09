@@ -15,7 +15,6 @@ public class CacheImageLoader extends ImageLoader {
     private final BitmapLruCache mMemoryCache;
     private final Cache mDiskCache;
 
-
     public CacheImageLoader(RequestQueue queue, BitmapLruCache memoryCache) {
         super(queue, memoryCache);
         mMemoryCache = memoryCache;
