@@ -1,4 +1,4 @@
-![Thumbnail](assets/images/articles/pebble-little-helper.png)
+![Thumbnail](/assets/images/articles/pebble-little-helper.png)
 
 ### Pebble: Little Helper
 
