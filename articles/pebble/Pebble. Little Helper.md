@@ -4,7 +4,7 @@
 
 Day by day technology is growing up and is doing this really fast. Of course it didn't forget about wearable devices like [smartwatches][1]. I was always thinking that smartwatch is not the best idea. Who wants watch that need to be charged every day? But [Pebble][2] made me to believe in them.
 
-![Pebble Icon](/articles/pebble-icon.jpg)
+![Pebble Icon](/assets/images/articles/pebble-icon.jpg)
 
 ### Why Pebble ?
 
@@ -16,7 +16,7 @@ Day by day technology is growing up and is doing this really fast. Of course it 
 - Cross platforming - works with Android and iOS
 - A lot of possibilities for developers
 
-![Pebble Icon 2](/articles/pebble-icon-2.jpg)
+![Pebble Icon 2](/assets/images/articles/pebble-icon-2.jpg)
 
 ### Usage
 
@@ -35,7 +35,7 @@ Lets look closer :
 
 Pebble opens the door into the world of Comfort and new Possibilities.
 
-![Pebble Icon Bike](/articles/pebble-icon-bike.jpg)
+![Pebble Icon Bike](/assets/images/articles/pebble-icon-bike.jpg)
 
 ### Development
 
