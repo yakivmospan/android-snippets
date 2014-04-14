@@ -1,4 +1,4 @@
-![Header][0]
+![Header](/assets/images/articles/http-volley-request-manager-lite.png)
 
 ### Volley Request Manager - Lite
 
@@ -102,6 +102,6 @@ public class HttpFactory {
     }
 }
 ```
-  [0]: https://raw.githubusercontent.com/yakivmospan/yakivmospan/master/assets/images/articles/http-volley-request-manager-lite.png
+
   [1]: https://github.com/yakivmospan/volley-request-manager-lite
   [2]: https://github.com/yakivmospan/yakivmospan/blob/master/articles/android/http/Volley%20Request%20Manager.md
