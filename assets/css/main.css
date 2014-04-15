@@ -37,6 +37,13 @@ h5 {
     font-size: 20px;
 }
 
+span.tag {
+    background-color: #e0eaf1;
+    color: #3e6d8e;
+    vertical-align: baseline;
+    white-space: pre-wrap;
+}
+
 p {
     margin-bottom: 10px;
     float: none;
