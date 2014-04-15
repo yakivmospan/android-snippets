@@ -18,7 +18,7 @@ All logic are based in one [Application][2] class and few interfaces :
 `Application` is a [Singleton][7] that you can get from any [Activity][8] or [Service][9] with `getApplication()` method. Also you can cast your `getApplicationContext()` to Application.
 
 ```java
-// get from Activity or Service
+// get inside of Activity or Service
 Application app = getApplication();
 
 // get from Contex
