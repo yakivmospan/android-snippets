@@ -49,6 +49,11 @@ p {
     float: none;
 }
 
+p.tag {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
 a {
     color: #33B5E5;
     /*font-style: italic;*/
