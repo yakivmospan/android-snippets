@@ -146,7 +146,7 @@ app.registerActivityLifecycleCallbacks(new Application.ActivityLifecycleCallback
 });
 
 ```
-**From API 18** we have one more observer `Application.OnProvideAssistDataListener` that allows to  to place into the bundle anything you would like to appear in the `Intent.EXTRA_ASSIST_CONTEXT` part of the assist Intent
+**From API 18** we have one more observer `Application.OnProvideAssistDataListener` that allows to place into the bundle anything you would like to appear in the `Intent.EXTRA_ASSIST_CONTEXT` part of the assist Intent
 
 ```java
 app.registerOnProvideAssistDataListener(new Application.OnProvideAssistDataListener() {
@@ -156,6 +156,10 @@ app.registerOnProvideAssistDataListener(new Application.OnProvideAssistDataListe
     }
 });
 ```
+
+### Performance & Tips
+
+### Sample Code
 
 
   [1]: http://developer.android.com/reference/android/content/ContentProvider.html
