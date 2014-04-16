@@ -75,6 +75,15 @@ public class App extends Application {
     }
     
     @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        // Called by the system when the device configuration changes while your
+        // component is running. Unlike activities Application doesn't restart when
+        // a configuration changes
+    }
+
+    
+    @Override
     public void onTerminate() {
         super.onTerminate();
         // This method is for use in emulated process environments only.
