@@ -121,6 +121,30 @@ app.registerComponentCallbacks(new ComponentCallbacks() {
     }
 });
 
+// set ActivityLifecycleCallbacks
+app.registerActivityLifecycleCallbacks(new Application.ActivityLifecycleCallbacks(){
+    @Override
+    public void onActivityCreated(Activity activity, Bundle bundle) {}
+
+    @Override
+    public void onActivityStarted(Activity activity) {}
+
+    @Override
+    public void onActivityResumed(Activity activity) {}
+
+    @Override
+    public void onActivityPaused(Activity activity) {}
+
+    @Override
+    public void onActivityStopped(Activity activity) {}
+
+    @Override
+    public void onActivitySaveInstanceState(Activity activity, Bundle bundle) {}
+
+    @Override
+    public void onActivityDestroyed(Activity activity) {}
+});
+
 ```
 **From API 18** we have one more observer `Application.OnProvideAssistDataListener` that allows to  to place into the bundle anything you would like to appear in the `Intent.EXTRA_ASSIST_CONTEXT` part of the assist Intent
 
