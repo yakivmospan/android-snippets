@@ -95,7 +95,7 @@ public class App extends Application {
 
 **From API 14** android guys added few simple observers, so now you don't need to create Custom Application every time
 
-- Added possibility to set `ComponentCallbacks` : `onConfigurationChanged` and `onLowMemory`
+- Added possibility to set `ComponentCallbacks` : `onConfigurationChanged` and `onLowMemory` methods
 - Added new `ComponentCallbacks2` interface: implements `ComponentCallbacks` and has new `onTrimMemory` method. It provide us possibility to handle different memory levels change.
 - **Note** that `onLowMemory` **is not called** from API 14. You should only use it as a fallback for older versions, which can be treated the same as `onTrimMemory` with the `ComponentCallbacks2.TRIM_MEMORY_COMPLETE` level.
 - Added `registerActivityLifecycleCallbacks` which allows you to handle state change of each activity in your program
