@@ -250,7 +250,7 @@ ComponentCallbacks2 mComponentCallbacks = new ComponentCallbacks2() {
 }
 ```
 
-- Save context in your `onCreate()` to have possibility to get it from any where in your project. But note that it will cause a lot of Spaghetti code. This is highly not recommended
+- Save context in your `onCreate()` to have possibility to get it from any where in your project. But note that it will cause a lot of [Spaghetti code][10]. This is highly not recommended
 
 ```java
 Context context = App.getContext();
@@ -269,6 +269,7 @@ public class App extends Application {
     }
 ```
 
+
   [1]: http://developer.android.com/reference/android/content/ContentProvider.html
   [2]: http://developer.android.com/reference/android/app/Application.html
   [3]: http://developer.android.com/reference/android/content/ComponentCallbacks.html
@@ -278,3 +279,4 @@ public class App extends Application {
   [7]: http://www.oodesign.com/singleton-pattern.html
   [8]: http://developer.android.com/reference/android/app/Activity.html
   [9]: http://developer.android.com/reference/android/app/Service.html
+  [10]: http://en.wikipedia.org/wiki/Spaghetti_code
