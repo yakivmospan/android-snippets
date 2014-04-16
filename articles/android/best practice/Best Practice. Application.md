@@ -96,19 +96,41 @@ public class App extends Application {
 **From API 14** android gays added few simple observers, so now you don't need to create Custom Application every time
 
 - Added possibility to set `ComponentCallbacks`: `onConfigurationChanged` and `onLowMemory`
-- Added new `ComponentCallbacks2` interface: implements `ComponentCallbacks` and has new `onTrimMemory` method that also allows us to handle different memory states change. Such as `TRIM_MEMORY_COMPLETE`, `TRIM_MEMORY_UI_HIDDEN` and else
+- Added new `ComponentCallbacks2` interface: implements `ComponentCallbacks` and has new `onTrimMemory` method. It provide us possibility to handle different memory levels change.
+- **Note** that `onLowMemory` **is not called** from API 14. You should only use it as a fallback for older versions, which can be treated the same as `onTrimMemory` with the `ComponentCallbacks2.TRIM_MEMORY_COMPLETE` level.
+- Added `registerActivityLifecycleCallbacks` which allows you to handle state change of each activity in your program
 
 ```java
 // set ComponentCallbacks with out overriding
 app.registerComponentCallbacks(new ComponentCallbacks() {
     @Override
     public void onConfigurationChanged(Configuration configuration) {
+    // determinates Configuration Change
     }
+
     @Override
     public void onLowMemory() {
+    // use it only for older API version 
+    }
+    
+    @Override
+    public void onTrimMemory(int level) {
+    super.onTrimMemory(level);
+    // Called when the operating system has determined that it is a good
+    // time for a process to trim unneeded memory from its process
     }
 });
 
+```
+**From API 18** we have one more observer `Application.OnProvideAssistDataListener` that allows to  to place into the bundle anything you would like to appear in the `Intent.EXTRA_ASSIST_CONTEXT` part of the assist Intent
+
+```java
+app.registerOnProvideAssistDataListener(new Application.OnProvideAssistDataListener() {
+    @Override
+    public void onProvideAssistData(Activity activity, Bundle data) {
+    // put your changes here
+    }
+});
 ```
 
 
