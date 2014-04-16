@@ -93,7 +93,7 @@ public class App extends Application {
 ```
 
 
-**From API 14** android gays added few simple observers, so now you don't need to create Custom Application every time
+**From API 14** android guys added few simple observers, so now you don't need to create Custom Application every time
 
 - Added possibility to set `ComponentCallbacks`: `onConfigurationChanged` and `onLowMemory`
 - Added new `ComponentCallbacks2` interface: implements `ComponentCallbacks` and has new `onTrimMemory` method. It provide us possibility to handle different memory levels change.
