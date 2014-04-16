@@ -46,7 +46,7 @@ public class App extends Application {
     android:theme="@style/AppTheme">
 ```
 
-And what it can give to us ?
+#### And what it can give to us ?
 
 ```java
 // ...
