@@ -57,7 +57,7 @@ Application app = getApplication();
 AssetManager assets = app.getAssets();
 ```
 
-And this is all what we could do with it **before API 14** without overriding. So if you are supporting old OS versions and need to maintain global application state **you will need to** create Custom Application
+And thats all, all we could do **before API 14** without overriding. So if you are supporting old OS versions and need to maintain global application state **you will need to** create Custom Application
 
 ```java
 public class App extends Application {
