@@ -25,22 +25,81 @@ Application app = getApplication();
 Application app = (Application)view.getContext().getApplicationContext();
 ```
 
+You can create your own custom application. To do this you need :
+
+- Create `class` that extends `Application`
 
 ```java
 public class App extends Application {
+    // your logic goes here
 }
 ```
+
+- Initialize your custom `Application` in manifest (just add `name` tag that should matches your `Application` path)
 
 ```xml
 <!--AndroidManifest.xml-->
 <application
-    android:name=".App"
+    android:name="yourpackage.App"
     android:icon="@drawable/ic_launcher"
     android:label="@string/app_name"
     android:theme="@style/AppTheme">
 ```
 
->onCreate ()
+And what it can give to us ?
+
+```java
+// ...
+Application app = getApplication();
+
+// as Application extends ContextWrapper we can do everything the it can
+// (get Assets as well)
+AssetManager assets = app.getAssets();
+```
+
+And this is all what we could do with it **before API 14** without overriding. So if you are supporting old OS versions and need to maintain global application state **you will need to** create Custom Application
+
+```java
+public class App extends Application {
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        // your application starts from here
+    }
+    
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        // This is called when the overall system is running low on memory
+        // and actively running processes should trim their memory usage
+    }
+    
+    @Override
+    public void onTerminate() {
+        super.onTerminate();
+        // This method is for use in emulated process environments only.
+        // You can simply forget about it because it will never be called on real device
+    }
+}
+```
+
+
+**From API 14** we could :
+
+- asd
+
+```java
+// set ComponentCallbacks with out overriding
+app.registerComponentCallbacks(new ComponentCallbacks() {
+    @Override
+    public void onConfigurationChanged(Configuration configuration) {
+    }
+    @Override
+    public void onLowMemory() {
+    }
+});
+
+```
 
 
   [1]: http://developer.android.com/reference/android/content/ContentProvider.html
