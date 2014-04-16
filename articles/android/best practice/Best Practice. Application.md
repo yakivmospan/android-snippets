@@ -159,8 +159,115 @@ app.registerOnProvideAssistDataListener(new Application.OnProvideAssistDataListe
 
 ### Performance & Tips
 
-### Sample Code
+- `Applications` starts before any activity, service, or receiver objects have been created. Use this to initialize your model (http client, database, libraries etc.)
 
+- There is normally no need to use Application as your static model(hold your objects as class fields). In most situation, static singletons can provide the same functionality in a more modular way. If your singleton needs a global context (for example to register broadcast receivers), the function to retrieve it can be given a Context which internally uses `Context.getApplicationContext()` when first constructing the singleton.
+
+```java
+public class App extends Application {
+
+    @Override
+    public void registerComponentCallbacks(ComponentCallbacks callback) {
+        super.registerComponentCallbacks(callback);
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+        // init your model before any activities starts
+        // in this way you will always know where your application starts
+        initModel();
+    }
+
+    private void initModel() {
+        Context applicationContext = getApplicationContext();
+
+        // initialize volley http client
+        RequestManager.initializeWith(applicationContext);
+        ImageManager.initializeWith(applicationContext);
+
+        // initialize your singleton
+        Model.INSTANCE.initialize(applicationContext);
+
+        // initialize your preferences
+        PreferencesManager.initializeInstance(applicationContext);
+    }
+}
+```
+
+```java
+public enum Model {
+    INSTANCE;
+    public void initialize(Context context){
+        // save your context as field
+        // or do whatever you want here..
+    }
+}
+```
+
+- Always remember that `Application` runs on UI thread. Implementations of your `onCreate` method should be as quick as possible since the time spent in this method directly impacts the performance of starting the first activity, service, or receiver in a process
+
+- If you override `onCreate` method, be sure to call `super.onCreate()`
+
+- You can save your static fast changing global data right before your Application be killed. For example if you are collecting some GPS locations statistic is a bad practice for battery life to save it every time when new location came. Just save it when user want to stop collecting data is not enough because your Application can be killed in background when Android need some memory. To be sure that your data will be not lost you can use `onLowMemory` and `onTrimMemory` methods. Be sure that you need to do this in your `Application` class, every `Activity` and `Service` implements `ComponentCallbacks` interface. **Always remember** that even after this call application can be not killed or be killed with some delay. 
+
+```java
+// in Application, Activity or Service
+
+ComponentCallbacks2 mComponentCallbacks = new ComponentCallbacks2() {
+    @Override
+    public void onTrimMemory(int level) {
+        if(level == ComponentCallbacks2.TRIM_MEMORY_COMPLETE){
+            saveGlobalData();
+        }
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+    }
+
+    @Override
+    public void onLowMemory() {
+        // call it here to support old operating systems
+        saveGlobalData();
+    }
+
+    private void saveGlobalData() {
+        // save your stats to database
+    }
+};
+```
+
+- You can use `onTrimMemory` with `ComponentCallbacks2.TRIM_MEMORY_UI_HIDDEN` to handle when your application goes to background
+
+```java
+@Override
+    public void onTrimMemory(int level) {
+    if(level == ComponentCallbacks2.TRIM_MEMORY_UI_HIDDEN){
+        // app in background
+    }
+}
+```
+
+- Save context in your `onCreate()` to have possibility to get it from any where in your project. But note that it will cause a lot of Spaghetti code. This is highly not recommended
+
+```java
+Context context = App.getContext();
+```
+
+```java
+public class App extends Application {
+    private static Context mContext;
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        mContext = getApplicationContext();
+    }
+    public static Context getContext() {
+        return mContext;
+    }
+```
 
   [1]: http://developer.android.com/reference/android/content/ContentProvider.html
   [2]: http://developer.android.com/reference/android/app/Application.html
