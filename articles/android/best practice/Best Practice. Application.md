@@ -105,7 +105,7 @@ public class App extends Application {
 app.registerComponentCallbacks(new ComponentCallbacks() {
     @Override
     public void onConfigurationChanged(Configuration configuration) {
-    // determinates Configuration Change
+    // determinate Configuration Change
     }
 
     @Override
@@ -115,7 +115,6 @@ app.registerComponentCallbacks(new ComponentCallbacks() {
     
     @Override
     public void onTrimMemory(int level) {
-    super.onTrimMemory(level);
     // Called when the operating system has determined that it is a good
     // time for a process to trim unneeded memory from its process
     }
