@@ -270,7 +270,7 @@ public class App extends Application {
 }    
 ```
 
-- There are cases when we need to handle that all Activities are destroyed (App is off). If you need to stop `Service` that work with few screens when Application goes off. `ActivityLifecycleCallbacks` can help you to deal with it 
+- There are cases when we need to handle that all Activities are destroyed (App is off). For example if you need to stop `Service` that work with few screens when Application goes off. `ActivityLifecycleCallbacks` can help you to deal with it 
 
 ```java
 // set ActivityLifecycleCallbacks
