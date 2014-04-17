@@ -1,3 +1,5 @@
+![Header](/assets/images/articles/best-practice-application.png)
+
 ### Best Practice: Application
 
 >Base class for those who need to maintain global application state. 
