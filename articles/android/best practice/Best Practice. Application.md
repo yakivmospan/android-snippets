@@ -102,7 +102,7 @@ public class App extends Application {
 
 ```java
 // set ComponentCallbacks with out overriding
-app.registerComponentCallbacks(new ComponentCallbacks() {
+app.registerComponentCallbacks(new ComponentCallbacks2() {
     @Override
     public void onConfigurationChanged(Configuration configuration) {
     // determinate Configuration Change
