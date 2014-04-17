@@ -270,6 +270,37 @@ public class App extends Application {
 }    
 ```
 
+- There are cases when we need to handle that all Activities are destroyed (App is off). For you need to stop `Service` that work with few screens when Application goes off. `ActivityLifecycleCallbacks` can help you to deal with it 
+
+```java
+// set ActivityLifecycleCallbacks
+app.registerActivityLifecycleCallbacks(new Application.ActivityLifecycleCallbacks(){
+    
+    private int mCounter;
+
+    @Override
+    public void onActivityCreated(Activity activity, Bundle bundle) {
+      mCounter++;
+    }
+
+    @Override
+    public void onActivityDestroyed(Activity activity) {
+       mCounter--;
+       
+       if(mScreensCounter == 0) {
+          //... Application is Off
+       }
+       
+       if(mScreensCounter < 0) {
+           mCounter = 0;
+       }
+    }
+    
+    //... 
+});
+
+```
+
 
   [1]: http://developer.android.com/reference/android/content/ContentProvider.html
   [2]: http://developer.android.com/reference/android/app/Application.html
