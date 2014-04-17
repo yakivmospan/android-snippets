@@ -275,23 +275,23 @@ public class App extends Application {
 // set ActivityLifecycleCallbacks
 app.registerActivityLifecycleCallbacks(new Application.ActivityLifecycleCallbacks(){
     
-    private int mCounter;
+    private int mScreensCounter;
 
     @Override
     public void onActivityCreated(Activity activity, Bundle bundle) {
-      mCounter++;
+      mScreensCounter++;
     }
 
     @Override
     public void onActivityDestroyed(Activity activity) {
-       mCounter--;
+       mScreensCounter--;
        
        if(mScreensCounter == 0) {
           //... Application is Off
        }
        
        if(mScreensCounter < 0) {
-           mCounter = 0;
+           mScreensCounter = 0;
        }
     }
     
