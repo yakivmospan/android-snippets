@@ -165,10 +165,6 @@ app.registerOnProvideAssistDataListener(new Application.OnProvideAssistDataListe
 ```java
 public class App extends Application {
 
-    @Override
-    public void registerComponentCallbacks(ComponentCallbacks callback) {
-        super.registerComponentCallbacks(callback);
-    }
 
     @Override
     public void onCreate() {
