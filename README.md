@@ -1,5 +1,6 @@
 ### Articles
 
+- [Best Practice: Application][0]
 - [Best Practice: SharedPreferences][1]
 - [Pebble: Little Helper][2]
 - [Volley Request Manager - Lite][3]
@@ -16,7 +17,7 @@
 - [Spinner: Hint][11]
  
 
-
+  [0]: https://github.com/yakivmospan/code-view/blob/gh-pages/articles/android/best%20practice/Best%20Practice.%20Application.md
   [1]: https://github.com/yakivmospan/code-view/blob/gh-pages/articles/android/best%20practice/Best%20Practice.%20SharedPreferences.md
   [2]: https://github.com/yakivmospan/code-view/blob/gh-pages/articles/pebble/Pebble.%20Little%20Helper.md
   [3]: https://github.com/yakivmospan/code-view/blob/gh-pages/articles/android/http/Volley%20Request%20Manager%20-%20Lite.md
