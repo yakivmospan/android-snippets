@@ -9,7 +9,7 @@
 ### Gists
 
 - [Adapters](/gists/Adapters.md)
-- [Utils: DialogHelper](/gists/Utils.%20LDialogHelper.md)
+- [Utils: DialogHelper](/gists/Utils.%20DialogHelper.md)
 - [Utils: L](/gists/Utils.%20L.md)
 - [Utils: Keyboard](/gists/Utils.%20Keyboard.md)
 - [Utils: Uri](/gists/Utils.%20Uri.md)
