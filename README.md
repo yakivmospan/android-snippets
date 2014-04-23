@@ -1,31 +1,18 @@
 ### Articles
 
-- [Best Practice: Application][0]
-- [Best Practice: SharedPreferences][1]
-- [Pebble: Little Helper][2]
-- [Volley Request Manager - Lite][3]
-- [Volley Request Manager][4]
+- [Best Practice: Application](/articles/android/best%20practice/Best%20Practice.%20Application.md)
+- [Best Practice: SharedPreferences](/articles/android/best%20practice/Best%20Practice.%20SharedPreferences.md)
+- [Pebble: Little Helper](/articles/pebble/Pebble.%20Little%20Helper.md)
+- [Volley Request Manager - Lite](/articles/android/http/Volley%20Request%20Manager%20-%20Lite.md)
+- [Volley Request Manager](/articles/android/http/Volley%20Request%20Manager.md)
 
 ### Gists
 
-- [Adapters][5]
-- [Utils: L][6]
-- [Utils: Keyboard][7]
-- [Utils: Uri][8]
-- [Volley: Authorization][9]
-- [Volley: CacheImageLoader][10]
-- [Spinner: Hint][11]
- 
-
-  [0]: https://github.com/yakivmospan/code-view/blob/gh-pages/articles/android/best%20practice/Best%20Practice.%20Application.md
-  [1]: https://github.com/yakivmospan/code-view/blob/gh-pages/articles/android/best%20practice/Best%20Practice.%20SharedPreferences.md
-  [2]: https://github.com/yakivmospan/code-view/blob/gh-pages/articles/pebble/Pebble.%20Little%20Helper.md
-  [3]: https://github.com/yakivmospan/code-view/blob/gh-pages/articles/android/http/Volley%20Request%20Manager%20-%20Lite.md
-  [4]: https://github.com/yakivmospan/code-view/blob/gh-pages/articles/android/http/Volley%20Request%20Manager.md
-  [5]: https://github.com/yakivmospan/code-view/blob/gh-pages/gists/Adapters.md
-  [6]: https://github.com/yakivmospan/code-view/blob/gh-pages/gists/Utils.%20L.md
-  [7]: https://github.com/yakivmospan/code-view/blob/gh-pages/gists/Utils.%20Keyboard.md
-  [8]: https://github.com/yakivmospan/code-view/blob/gh-pages/gists/Utils.%20Uri.md
-  [9]: https://github.com/yakivmospan/code-view/blob/gh-pages/gists/Volley.%20Authorization.md
-  [10]: https://github.com/yakivmospan/code-view/blob/gh-pages/gists/Volley.%20CacheImageLoader.md
-  [11]: https://github.com/yakivmospan/code-view/blob/gh-pages/gists/Spinner.%20Hint.md
+- [Adapters](/gists/Adapters.md)
+- [Utils: DialogHelper](/gists/Utils.%20LDialogHelper.md)
+- [Utils: L](/gists/Utils.%20L.md)
+- [Utils: Keyboard](/gists/Utils.%20Keyboard.md)
+- [Utils: Uri](/gists/Utils.%20Uri.md)
+- [Volley: Authorization](/gists/Volley.%20Authorization.md)
+- [Volley: CacheImageLoader](/gists/Volley.%20CacheImageLoader.md)
+- [Spinner: Hint](/gists/Spinner.%20Hint.md)
