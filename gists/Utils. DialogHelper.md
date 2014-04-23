@@ -1,6 +1,6 @@
 ### Utils: DialogHelper
 
-Class that helps to **show/dismiss** `DialogFraments`
+Class that helps to **show/dismiss** `DialogFraments` allowing state loss
 
 ```java
 public class DialogHelper {
