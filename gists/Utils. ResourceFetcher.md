@@ -1,6 +1,6 @@
 ### Utils: ResourceFetcher
 
-Some times we need find resorce ID by it String name. This class will help to do this
+Some times we need find resource ID by it String name. This class will help to do this
 
 **Usage**
 
