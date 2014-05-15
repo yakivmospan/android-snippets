@@ -6,6 +6,10 @@
 - [Volley Request Manager - Lite](/articles/android/http/Volley%20Request%20Manager%20-%20Lite.md)
 - [Volley Request Manager](/articles/android/http/Volley%20Request%20Manager.md)
 
+### Presentatios
+
+- [Technical Articles Writing](https://docs.google.com/presentation/d/1lsmhkqeZ0YfFejhAsymV0UpWauw4lffJ6rdOY_covOo/edit#slide=id.g180a4c033_093)
+
 ### Gists
 
 - [Adapters](/gists/Adapters.md)
