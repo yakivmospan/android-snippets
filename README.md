@@ -8,7 +8,7 @@
 
 ### Presentatios
 
-- [Technical Articles Writing](https://docs.google.com/presentation/d/1lsmhkqeZ0YfFejhAsymV0UpWauw4lffJ6rdOY_covOo/edit#slide=id.g180a4c033_093)
+- [Technical Articles Writing](https://docs.google.com/presentation/d/1lsmhkqeZ0YfFejhAsymV0UpWauw4lffJ6rdOY_covOo/edit#slide=id.p)
 
 ### Gists
 
