@@ -1,5 +1,7 @@
 ### View. HeaderGridView
 
+`GridView` wrapper with possibility to add header. Just use it like `ListView`
+
 ```java
 package com.handmark.pulltorefresh.library.internal;
 
