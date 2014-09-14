@@ -17,6 +17,7 @@
 - [Utils: L](/gists/Utils.%20L.md)
 - [Utils: Keyboard](/gists/Utils.%20Keyboard.md)
 - [Utils: Uri](/gists/Utils.%20Uri.md)
+- [Utils: Custom Toast](/gists/Utils.%20Custom%20Toast.md)
 - [Volley: Authorization](/gists/Volley.%20Authorization.md)
 - [Volley: CacheImageLoader](/gists/Volley.%20CacheImageLoader.md)
 - [Spinner: Hint](/gists/Spinner.%20Hint.md)
