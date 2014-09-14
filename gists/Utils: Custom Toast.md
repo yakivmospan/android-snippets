@@ -2,10 +2,12 @@
 
 Snippet shows simple implementation of custom `Toast` that can be easily used in hole application.
 
-![Header](https://raw.githubusercontent.com/yakivmospan/android-codeview/gh-pages/assets/images/gists/utilst-custom-toast-1.png)
+![Header](/assets/images/gists/utilst-custom-toast-1.png)
 
 ####Key notes 
 
+- Use `Toast` to show simple informative messages
+- Create custom `Toast` when you need to change for example text font, view color or add some image to make message more informative
 - You can not change `Toast` animation even if you create custom one
 - You have only two duration options `Toast.LENGTH_SHORT` and `Toast.LENGTH_LONG`
 - You can not handle click on `Toast` even on custom one
