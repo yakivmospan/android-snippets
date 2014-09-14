@@ -6,7 +6,7 @@ Snippet shows simple implementation of custom `Toast` that can be easily used in
 
 ####Key notes 
 
-- Use `Toast` to show simple informative messages
+- Use `Toast` to show simple informative messages only
 - Create custom `Toast` when you need to change for example text font, view color or add some image to make message more informative
 - You can not change `Toast` animation even if you create custom one
 - You have only two duration options `Toast.LENGTH_SHORT` and `Toast.LENGTH_LONG`
