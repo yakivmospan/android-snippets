@@ -12,7 +12,7 @@
 
 ### Gists
 
-- [Adapters](/gists/Adapters.md)
+- [Adapter: Simple Adapter](/gists/Adapter.Simple%20Adapter.md)
 - [Utils: DialogHelper](/gists/Utils.%20DialogHelper.md)
 - [Utils: L](/gists/Utils.%20L.md)
 - [Utils: Keyboard](/gists/Utils.%20Keyboard.md)
