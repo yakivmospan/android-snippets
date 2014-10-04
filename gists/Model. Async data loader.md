@@ -14,8 +14,7 @@ If you need to download some set of data that can be loaded asynchronously. And 
 ```java
 public class DownloadManager {
 
-    private static final int REQUEST_COUNT = 3;
-    private AtomicInteger mQueuedRequests = new AtomicInteger(REQUEST_COUNT);
+    private int mQueuedRequests = 3;
 
     private Context mContext;
     private Callback mCallback;
@@ -69,8 +68,9 @@ public class DownloadManager {
         mSecondResult = parseSecondData(jsonObject);
     }
 
+    synchronized
     private void checkLoadedData() {
-        if (mQueuedRequests.decrementAndGet() == 0) {
+        if (--mQueuedRequests == 0) {
             saveData();
         }
     }
