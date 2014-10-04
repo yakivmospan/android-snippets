@@ -15,6 +15,7 @@
 - [Adapter: Simple Adapter](/gists/Adapter.%20Simple%20Adapter.md)
 - [Gradle: Build files](/gists/Gradle.%20Build%20Files.md)
 - [Gradle: Tips](/gists/Gradle.%20Tips.md)
+- [Model: Async data loader](/gists/Model.%20Async%20data%20loader.md)
 - [Utils: DialogHelper](/gists/Utils.%20DialogHelper.md)
 - [Utils: L](/gists/Utils.%20L.md)
 - [Utils: Keyboard](/gists/Utils.%20Keyboard.md)
