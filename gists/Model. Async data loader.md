@@ -14,7 +14,8 @@ If you need to download some set of data that can be loaded asynchronously. And 
 ```java
 public class DownloadManager {
 
-    private AtomicInteger mQueuedRequests = new AtomicInteger();
+    private static final int REQUEST_COUNT = 3;
+    private AtomicInteger mQueuedRequests = new AtomicInteger(REQUEST_COUNT);
 
     private Context mContext;
     private Callback mCallback;
@@ -37,8 +38,7 @@ public class DownloadManager {
     }
 
     private void loadFirstData() {
-        mQueuedRequests.incrementAndGet();
-        HttpFactory.createFirstRequest(
+        HttpFactory.createFristRequest(
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject jsonObject) {
@@ -54,7 +54,6 @@ public class DownloadManager {
     }
 
     private void loadSecondData() {
-        mQueuedRequests.incrementAndGet();
         HttpFactory.createSecondRequest(
                 new Response.Listener<JSONObject>() {
                     @Override
