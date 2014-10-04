@@ -38,7 +38,7 @@ public class DownloadManager {
 
     private void loadFirstData() {
         mQueuedRequests.incrementAndGet();
-        HttpFactory.createFristRequest(
+        HttpFactory.createFirstRequest(
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject jsonObject) {
