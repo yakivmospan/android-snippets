@@ -1,8 +1,8 @@
 ### View: ActivityToast
 
-![Header](/assets/images/gists/activity-toast.gif)
-
 Snippet shows implementation of custom `Toast` that:
+
+![Header](/assets/images/gists/activity-toast.gif)
 
 - Have similar iterfase as original `Toast` class
 - Can be used as `Dialog` (have clickable buttons like Gmail app)
