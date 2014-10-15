@@ -1,5 +1,7 @@
 ### View: ActivityToast
 
+![Header](/assets/images/gists/activity-toast.gif)
+
 Snippet shows implementation of custom `Toast` that:
 
 - Have similar iterfase as original `Toast` class
