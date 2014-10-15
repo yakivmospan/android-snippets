@@ -44,7 +44,7 @@ Current Limitations:
         toast.isShowing(); // check if toast is showing now
         toast.cancel(); //cancel toast view
         
-        toast.getToastView(); //get toast view to update it or to do something ..
+        toast.getView(); //get toast view to update it or to do something ..
     }
 ```
 
@@ -191,7 +191,7 @@ public class ActivityToast {
         mLength = length;
     }
 
-    public View getToastView() {
+    public View getView() {
         return mToastView;
     }
 
