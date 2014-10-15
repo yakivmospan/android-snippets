@@ -47,7 +47,6 @@ Current Limitations:
 ```
 
 #### Sources
-```java
 import android.app.Activity;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -72,7 +71,7 @@ public class ActivityToast {
 
     private ViewGroup mParent;
     private FrameLayout mToastHolder;
-    private View mToast;
+    private View mToastView;
 
     private Animation mShowAnimation;
     private Animation mCancelAnimation;
@@ -87,8 +86,9 @@ public class ActivityToast {
     /**
      * @param activity Toast will be shown at top of the widow of this Activity
      */
-    public ActivityToast(@NonNull Activity activity, View toast) {
+    public ActivityToast(@NonNull Activity activity, View toastView) {
         mActivity = activity;
+
         mParent = (ViewGroup) activity.getWindow().getDecorView();
         mToastHolder = new FrameLayout(activity.getBaseContext());
         mLayoutParams = new FrameLayout.LayoutParams(
@@ -106,8 +106,8 @@ public class ActivityToast {
         mCancelAnimation.setDuration(DEFAULT_ANIMATION_DURATION);
         mCancelAnimation.setAnimationListener(mHidenCancelListener);
 
-        mToast = toast;
-        mToastHolder.addView(mToast);
+        mToastView = toastView;
+        mToastHolder.addView(mToastView);
 
         mToastHolder.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -187,6 +187,10 @@ public class ActivityToast {
 
     public void setLength(long length) {
         mLength = length;
+    }
+
+    public View getToastView() {
+        return mToastView;
     }
 
     private Runnable mCancelTask = new Runnable() {
