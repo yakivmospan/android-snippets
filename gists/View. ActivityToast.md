@@ -43,6 +43,8 @@ Current Limitations:
         toast.show(); //show toast view
         toast.isShowing(); // check if toast is showing now
         toast.cancel(); //cancel toast view
+        
+        toast.getToastView(); //get toast view to update it or to do something ..
     }
 ```
 
