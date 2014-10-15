@@ -10,6 +10,10 @@ Snippet shows implementation of custom `Toast` that:
 - Have possibility to set show and cancel animation
 - Lives only with initialized `Activity`
 
+Current Limitations:
+
+- No screen orientation change are supported
+
 #### Usage:
 ```java
     @Override
