@@ -4,7 +4,7 @@ Snippet shows implementation of custom `Toast` that:
 
 ![Header](/assets/images/gists/activity-toast.gif)
 
-- Have similar iterfase as original `Toast` class
+- Have similar interface as original `Toast` class
 - Can be used as `Dialog` (have clickable buttons like Gmail app)
 - Have possibility to set `length` in `millis`
 - Have possibility to set show and cancel animation
