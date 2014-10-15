@@ -11,7 +11,6 @@ Snippet shows implementation of custom `Toast` that:
 - Lives only with initialized `Activity`
 
 Current Limitations:
-
 - No screen orientation change are supported
 
 #### Usage:
