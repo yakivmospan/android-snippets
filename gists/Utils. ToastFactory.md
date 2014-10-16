@@ -120,4 +120,25 @@ public class ToastFactory {
 </selector>
 ```
 
+**dimens.xml** file
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="rect_radius">2dp</dimen>
+
+    <dimen name="ac_padding">16dp</dimen>
+
+    <dimen name="spacing_small">4dp</dimen>
+    <dimen name="spacing_big">8dp</dimen>
+
+    <dimen name="text_size_micro">12sp</dimen>
+    <dimen name="text_size_small">14sp</dimen>
+    <dimen name="text_size_medium">18sp</dimen>
+    <dimen name="text_size_large">22sp</dimen>
+
+    <dimen name="min_lay_width">48dp</dimen>
+    <dimen name="min_lay_height">48dp</dimen>
+</resources>
+```
+
 [1]: https://github.com/yakivmospan/android-codeview/blob/gh-pages/gists/View.%20ActivityToast.md
