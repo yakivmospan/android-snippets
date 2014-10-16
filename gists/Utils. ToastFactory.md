@@ -1,3 +1,4 @@
+### Utils: ToastFactory
 Sample shows simple factory that creates [ActivityToast][1]'s
 
 #### Usage
