@@ -49,6 +49,8 @@ Current Limitations:
 ```
 
 #### Sources
+
+```java
 import android.app.Activity;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -84,6 +86,7 @@ public class ActivityToast {
     private Animation.AnimationListener mCancelAnimationListener;
 
     private boolean mIsAnimationRunning;
+    private boolean mIsShown;
 
     /**
      * @param activity Toast will be shown at top of the widow of this Activity
@@ -102,11 +105,11 @@ public class ActivityToast {
 
         mShowAnimation = new AlphaAnimation(0.0f, 1.0f);
         mShowAnimation.setDuration(DEFAULT_ANIMATION_DURATION);
-        mShowAnimation.setAnimationListener(mHidenShowListener);
+        mShowAnimation.setAnimationListener(mHiddenShowListener);
 
         mCancelAnimation = new AlphaAnimation(1.0f, 0.0f);
         mCancelAnimation.setDuration(DEFAULT_ANIMATION_DURATION);
-        mCancelAnimation.setAnimationListener(mHidenCancelListener);
+        mCancelAnimation.setAnimationListener(mHiddenCancelListener);
 
         mToastView = toastView;
         mToastHolder.addView(mToastView);
@@ -125,6 +128,7 @@ public class ActivityToast {
     public void show() {
         if (!isShowing()) {
             mParent.addView(mToastHolder);
+            mIsShown = true;
 
             if (mShowAnimation != null) {
                 mToastHolder.startAnimation(mShowAnimation);
@@ -141,12 +145,13 @@ public class ActivityToast {
             } else {
                 mParent.removeView(mToastHolder);
                 mHandler.removeCallbacks(mCancelTask);
+                mIsShown = false;
             }
         }
     }
 
     public boolean isShowing() {
-        return mToastHolder.isShown();
+        return mIsShown;
     }
 
     /**
@@ -202,7 +207,7 @@ public class ActivityToast {
         }
     };
 
-    private Animation.AnimationListener mHidenShowListener = new Animation.AnimationListener() {
+    private Animation.AnimationListener mHiddenShowListener = new Animation.AnimationListener() {
         @Override
         public void onAnimationStart(Animation animation) {
             if (mShowAnimationListener != null) {
@@ -231,7 +236,7 @@ public class ActivityToast {
         }
     };
 
-    private Animation.AnimationListener mHidenCancelListener = new Animation.AnimationListener() {
+    private Animation.AnimationListener mHiddenCancelListener = new Animation.AnimationListener() {
         @Override
         public void onAnimationStart(Animation animation) {
             if (mCancelAnimationListener != null) {
@@ -251,6 +256,7 @@ public class ActivityToast {
             }
 
             mIsAnimationRunning = false;
+            mIsShown = false;
         }
 
         @Override
