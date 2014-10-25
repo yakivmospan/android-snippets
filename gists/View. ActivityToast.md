@@ -9,9 +9,7 @@ Snippet shows implementation of custom `Toast` that:
 - Have possibility to set `length` in `millis`
 - Have possibility to set show and cancel animation
 - Lives only with initialized `Activity`
-
-Current Limitations:
-- No screen orientation change are supported
+- Have screen orientation change support
 
 #### Usage:
 ```java
@@ -46,6 +44,30 @@ Current Limitations:
         
         toast.getView(); //get toast view to update it or to do something ..
     }
+```
+
+To handle screen orientation change :
+```java
+    private ActivityToast mToast;
+    
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //...
+        
+        mToast = new ActivityToast(this, toastView);
+        //init your toast
+        
+        mToast.restoreInstanceState(savedInstanceState);
+    }
+    
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if (mToast != null) {
+            mToast.saveInstanceState(outState);
+        }
+    } 
 ```
 
 #### Sources
