@@ -73,9 +73,12 @@ To handle screen orientation change :
 #### Sources
 
 ```java
+
 import android.app.Activity;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -89,6 +92,7 @@ public class ActivityToast {
     public static final long LENGTH_SHORT = 2000;
     public static final long LENGTH_LONG = 3000;
     public static final int DEFAULT_ANIMATION_DURATION = 400;
+    public static final String BUNDLE_IS_SHOWING = "com.ym.ActivityToast.IS_SHOWING";
 
     private final Activity mActivity;
     private FrameLayout.LayoutParams mLayoutParams;
@@ -222,6 +226,27 @@ public class ActivityToast {
         return mToastView;
     }
 
+    public void saveInstanceState(@Nullable Bundle bundle) {
+        if (bundle != null) {
+            bundle.putBoolean(BUNDLE_IS_SHOWING, isShowing());
+        }
+    }
+
+    public void restoreInstanceState(@Nullable Bundle savedInstanceState) {
+        if (savedInstanceState == null) {
+            return;
+        }
+
+        boolean isShowing = savedInstanceState.getBoolean(BUNDLE_IS_SHOWING, false);
+        if (isShowing) {
+            mHandler.removeCallbacks(mCancelTask);
+            mParent.addView(mToastHolder);
+            mIsShown = true;
+            mHandler.postDelayed(mCancelTask, mLength);
+        }
+    }
+
+
     private Runnable mCancelTask = new Runnable() {
         @Override
         public void run() {
@@ -289,5 +314,4 @@ public class ActivityToast {
         }
     };
 }
-
 ```
