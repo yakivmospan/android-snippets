@@ -28,3 +28,4 @@
 - [Volley: Authorization](/gists/Volley.%20Authorization.md)
 - [Volley: CacheImageLoader](/gists/Volley.%20CacheImageLoader.md)
 - [Spinner: Hint](/gists/Spinner.%20Hint.md)
+- [Widget: Simple Implementation](/gists/Widget.%20Simple%20Implementation.md)
