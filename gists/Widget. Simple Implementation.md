@@ -61,19 +61,19 @@ public class Widget extends AppWidgetProvider {
 
 **AndroidManifest:**
 ```xml
-	<receiver
-            android:name=".Widget"
-            android:icon="@drawable/ic_launcher"
-            android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
-                <action android:name="com.your.package.CUSTOM_ACTION"/>
+<receiver
+   android:name=".Widget"
+   android:icon="@drawable/ic_launcher"
+   android:label="@string/app_name" >
+   <intent-filter>
+       <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+       <action android:name="com.your.package.CUSTOM_ACTION"/>
 
-            </intent-filter>
+   </intent-filter>
 
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/widget_metadata" >
-            </meta-data>
-        </receiver>
+   <meta-data
+       android:name="android.appwidget.provider"
+       android:resource="@xml/widget_metadata" >
+   </meta-data>
+</receiver>
 ```
