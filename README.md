@@ -21,6 +21,8 @@
 - [Utils: DialogHelper](/gists/Utils.%20DialogHelper.md)
 - [Utils: L](/gists/Utils.%20L.md)
 - [Utils: Keyboard](/gists/Utils.%20Keyboard.md)
+- [Utils: Random](/gists/Utils.%20Random.md)
+- [Utils: ResourceFetcher](/gists/Utils.%20ResourceFetcher.md)
 - [Utils: ToastFactory](/gists/Utils.%20ToastFactory.md)
 - [Utils: Uri](/gists/Utils.%20Uri.md)
 - [View: ActivityToast](/gists/View.%20ActivityToast.md)
