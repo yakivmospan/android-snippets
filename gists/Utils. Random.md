@@ -1,6 +1,6 @@
 ### Utils: Random
 
-Utils can generate random number from closed [min, max] range, when min < max
+Utils for generating random number from closed [min, max] range, while min <= max is true
 
 ```java
 import junit.framework.Assert;
