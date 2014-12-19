@@ -31,3 +31,4 @@
 [![Twitter](/assets/images/social/twitter.png)](https://twitter.com/yakivmospan)
 [![Facebook](/assets/images/social/facebook.png)](https://www.facebook.com/yakiv.mospan)
 [![Linked In](/assets/images/social/linkedin.png)](https://www.linkedin.com/pub/yakiv-mospan/a8/a92/823)
+[![stackoverflow](/assets/images/social/stackoverflow.png)](http://stackoverflow.com/users/1805989/yakiv-mospan)
