@@ -1,5 +1,5 @@
 ![Header](/assets/images/general/readme-header.png)
-
+==
 ### Gists
 
 - [Adapter: Simple Adapter](/gists/Adapter.%20Simple%20Adapter.md)
@@ -33,3 +33,4 @@
 ### Presentatios
 
 - [Technical Articles Writing](https://docs.google.com/presentation/d/1lsmhkqeZ0YfFejhAsymV0UpWauw4lffJ6rdOY_covOo/edit#slide=id.p)
+==
