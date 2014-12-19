@@ -1,4 +1,4 @@
-![Header](/assets/images/articles/best-practice-application.png)
+![Header](/assets/images/general/readme-header.png)
 
 ### Gists
 
