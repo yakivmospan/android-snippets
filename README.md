@@ -2,25 +2,16 @@
 ==
 ### Gists
 
-- [Adapter: Simple Adapter](/gists/Adapter.%20Simple%20Adapter.md)
-- [Gradle: Build files](/gists/Gradle.%20Build%20Files.md)
-- [Gradle: Tips](/gists/Gradle.%20Tips.md)
-- [Model: Async data loader](/gists/Model.%20Async%20data%20loader.md)
-- [Utils: Apk](/gists/Utils.%20Apk.md)
-- [Utils: Custom Toast](/gists/Utils.%20Custom%20Toast.md)
-- [Utils: DialogHelper](/gists/Utils.%20DialogHelper.md)
-- [Utils: L](/gists/Utils.%20L.md)
-- [Utils: Keyboard](/gists/Utils.%20Keyboard.md)
-- [Utils: Random](/gists/Utils.%20Random.md)
-- [Utils: ResourceFetcher](/gists/Utils.%20ResourceFetcher.md)
-- [Utils: ToastFactory](/gists/Utils.%20ToastFactory.md)
-- [Utils: Uri](/gists/Utils.%20Uri.md)
-- [View: ActivityToast](/gists/View.%20ActivityToast.md)
-- [View: HeaderGridView](/gists/View.%20HeaderGridView.md)
-- [Volley: Authorization](/gists/Volley.%20Authorization.md)
-- [Volley: CacheImageLoader](/gists/Volley.%20CacheImageLoader.md)
-- [Spinner: Hint](/gists/Spinner.%20Hint.md)
-- [Widget: Simple Implementation](/gists/Widget.%20Simple%20Implementation.md)
+- [Adapter](/gists/adapter)
+- [Gradle](/gists//gradle)
+- [Model](/gists/model)
+- [Sample](/gists/sample)
+- [Utils](/gists/utils)
+- [View](/gists/view)
+- [Volley](/gists/volley)
+- [Volley](/gists/volley)
+- [Spinner](/gists/spinner)
+- [Widget](/gists/widget)
 
 ### Articles
 
@@ -33,4 +24,10 @@
 ### Presentatios
 
 - [Technical Articles Writing](https://docs.google.com/presentation/d/1lsmhkqeZ0YfFejhAsymV0UpWauw4lffJ6rdOY_covOo/edit#slide=id.p)
+
 ==
+
+[![Google Plus](/assets/images/social/google_plus.png)](https://plus.google.com/+YakivMospan)
+[![Twitter](/assets/images/social/twitter.png)](https://twitter.com/yakivmospan)
+[![Facebook](/assets/images/social/facebook.png)](https://www.facebook.com/yakiv.mospan)
+[![Linked In](/assets/images/social/linkedin.png)](https://www.linkedin.com/pub/yakiv-mospan/a8/a92/823)
