@@ -9,6 +9,5 @@ public class ActivityC extends Activity{
     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
     startActivity(intent);
   }
-  
 }  
 ```
