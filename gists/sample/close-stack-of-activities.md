@@ -1,4 +1,7 @@
 ```java
+
+![Header](/assets/images/gists/sample-activity-stack.png)
+
 public class ActivityC extends Activity{
   ...
   
