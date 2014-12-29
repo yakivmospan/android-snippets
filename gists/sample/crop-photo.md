@@ -5,8 +5,10 @@ Based on [UriUtils][1]
     private static final int REQUEST_IMAGE_GET = 3331;
     private static final int REQUEST_IMAGE_CROP = 3332;
 
-	private static final String IMAGE_NAME = "capture";
-    private static final String CROPPED_IMAGE_NAME = "cropped_capture";
+    //very important is to add extension to the saving file
+    //this will prevent rotation bug on some samsung devices
+    private static final String IMAGE_NAME = "capture.jpg";
+    private static final String CROPPED_IMAGE_NAME = "cropped_capture.jpg";
 	
 	private Toast mToast;
 	
