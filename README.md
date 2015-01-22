@@ -9,7 +9,6 @@
 - [Utils](/gists/utils)
 - [View](/gists/view)
 - [Volley](/gists/volley)
-- [Volley](/gists/volley)
 - [Spinner](/gists/spinner)
 - [Widget](/gists/widget)
 
