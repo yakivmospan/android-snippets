@@ -45,12 +45,13 @@ public class SimplePagerAdapter
         int childCount = container.getChildCount();
         container.addView(view, childCount > position ? position : childCount);
 
+        container.addView(view, 0);
         return view;
     }
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-        container.removeViewAt(position);
+        container.removeView((View) object);
     }
 
     public int getItem(int position) {
