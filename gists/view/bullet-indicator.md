@@ -18,10 +18,8 @@ ViewPager pager = (ViewPager) view.findViewById(R.id.pager);
 PagerAdapter adapter = new PagerAdapter(getActivity(), getFragmentManager());
 pager.setAdapter(adapter);
 
-indicator.buildBullet()
-        .addNormalState(R.drawable.bg_bullet)
-        .addSelectedState(R.drawable.bg_bullet_selected)
-;
+indicator.setBulletNormal(R.drawable.bg_bullet);
+indicator.setBulletSelected(R.drawable.bg_bullet_selected);;
 indicator.setViewPager(pager);
 indicator.setCurrentItem(Random.nextInt(0, adapter.getCount() - 1));
 ```
@@ -52,7 +50,7 @@ public class BulletIndicatorView extends LinearLayout {
 
     private int mBulletPadding = DEFAULT_BULLET_PADDING;
 
-    private Builder mBulletBuilder = new Builder();
+    private boolean mIsBulletClickable = true;
 
     private ViewPager.OnPageChangeListener mUserListener;
 
@@ -81,7 +79,7 @@ public class BulletIndicatorView extends LinearLayout {
                 removeAllViews();
                 int count = adapter.getCount();
                 for (int i = 0; i < count; i++) {
-                    addView(createBulletView());
+                    addView(createBulletView(i));
                 }
 
                 if (count > 0) {
@@ -91,12 +89,23 @@ public class BulletIndicatorView extends LinearLayout {
         }
     }
 
-    private View createBulletView() {
+    private View createBulletView(int id) {
         ImageView bullet = new ImageView(getContext());
+        bullet.setId(id);
         bullet.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
         bullet.setPadding(mBulletPadding, mBulletPadding, mBulletPadding, mBulletPadding);
+        bullet.setOnClickListener(mOnClickListener);
         return bullet;
     }
+
+    private OnClickListener mOnClickListener = new OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            if(mIsBulletClickable) {
+                setCurrentItem(view.getId());
+            }
+        }
+    };
 
     private ViewPager.OnPageChangeListener mDefaultListener = new ViewPager.OnPageChangeListener() {
         @Override
@@ -121,10 +130,6 @@ public class BulletIndicatorView extends LinearLayout {
             }
         }
     };
-
-    public Builder buildBullet() {
-        return mBulletBuilder;
-    }
 
     public void setCurrentItem(int position) {
         if(mPager!=null) {
@@ -175,34 +180,24 @@ public class BulletIndicatorView extends LinearLayout {
         mUserListener = userListener;
     }
 
-    public class Builder {
+    public void setBulletPadding(int padding) {
+        mBulletPadding = padding;
+    }
 
-        private Builder() {
-        }
+    public void setBulletNormal(@Nullable Drawable drawable) {
+        mBulletNormal = drawable;
+    }
 
-        public Builder addPadding(int padding) {
-            mBulletPadding = padding;
-            return this;
-        }
+    public void setBulletNormal(int drawable) {
+        setBulletNormal(getContext().getResources().getDrawable(drawable));
+    }
 
-        public Builder addNormalState(@Nullable Drawable drawable) {
-            mBulletNormal = drawable;
-            return this;
-        }
+    public void setBulletSelected(@Nullable Drawable drawable) {
+        mBulletSelected = drawable;
+    }
 
-        public Builder addNormalState(int drawable) {
-            return addNormalState(getContext().getResources().getDrawable(drawable));
-        }
-
-        public Builder addSelectedState(@Nullable Drawable drawable) {
-            mBulletSelected = drawable;
-            return this;
-        }
-
-        public Builder addSelectedState(int drawable) {
-            return addSelectedState(getContext().getResources().getDrawable(drawable));
-        }
+    public void setBulletSelected(int drawable) {
+        setBulletSelected(getContext().getResources().getDrawable(drawable));
     }
 }
-
 ```
