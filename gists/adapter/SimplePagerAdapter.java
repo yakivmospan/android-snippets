@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import fr.go_detect.godetect.R;
 
-public class TextSliderAdapter
+public class SimplePagerAdapter
         extends PagerAdapter {
 
     private int[] mData;
@@ -41,7 +41,9 @@ public class TextSliderAdapter
         view.setTextAppearance(mInflater.getContext(), R.style.Set_Font_Here);
         view.setGravity(Gravity.CENTER);
         view.setText(getItem(position));
-        container.addView(view, 0);
+        
+        int childCount = container.getChildCount();
+        container.addView(view, childCount > position ? position : childCount);
 
         return view;
     }
