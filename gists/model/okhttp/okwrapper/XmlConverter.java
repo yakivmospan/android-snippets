@@ -1,7 +1,3 @@
-package com.ls.skiresort.model.http.okwrapper;
-
-import com.ls.logger.L;
-import com.ls.skiresort.model.util.XmlHandler;
 import com.squareup.okhttp.ResponseBody;
 
 import org.xml.sax.InputSource;

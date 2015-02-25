@@ -1,5 +1,3 @@
-package com.ls.skiresort.model.http.okwrapper;
-
 import com.squareup.okhttp.Headers;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;

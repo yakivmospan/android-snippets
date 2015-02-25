@@ -1,5 +1,3 @@
-package com.ls.skiresort.model.http.okwrapper;
-
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 

@@ -1,5 +1,3 @@
-package com.ls.skiresort.model.http.okwrapper;
-
 import android.support.annotation.NonNull;
 
 /**

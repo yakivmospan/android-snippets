@@ -1,6 +1,3 @@
-package com.ls.skiresort.model.http.okwrapper;
-
-import com.ls.logger.L;
 import com.squareup.okhttp.Cache;
 import com.squareup.okhttp.OkHttpClient;
 

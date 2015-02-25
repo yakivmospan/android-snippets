@@ -1,5 +1,3 @@
-package com.ls.skiresort.model.util;
-
 import org.json.JSONObject;
 
 public abstract class JsonHandler<ResultType> {
