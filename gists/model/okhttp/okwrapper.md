@@ -1,6 +1,6 @@
 ### Model: okhttp wrapper
 
-Snippet shows how to use my [okwrapper](/gists/model/okhttp/okwrapper)
+Snippet shows how to use [okwrapper](/gists/model/okhttp/okwrapper)
 
 - Init request manager
 
