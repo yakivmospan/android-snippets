@@ -1,4 +1,5 @@
-Usage:
+**Usage**
+```java
 private BatteryChangeReceiver mBatteryChangeReceiver;
 
 @Override
@@ -15,7 +16,7 @@ protected void onDestroy() {
     }
     super.onDestroy();
 }
-
+```java
 
 
 **BatteryChangeReceiver.java**
