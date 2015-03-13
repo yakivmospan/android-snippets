@@ -16,7 +16,7 @@ protected void onDestroy() {
     }
     super.onDestroy();
 }
-```java
+```
 
 
 **BatteryChangeReceiver.java**
