@@ -8,6 +8,13 @@
         <action android:name="android.intent.action.QUICKBOOT_POWERON"/>
     </intent-filter>
 </receiver>
+
+<receiver android:name=".ShutdownReceiver">
+    <intent-filter>
+        <action android:name="android.intent.action.ACTION_SHUTDOWN" />
+        <action android:name="android.intent.action.QUICKBOOT_POWEROFF" />
+    </intent-filter>
+</receiver>
 ```
 
 **BootReceiver.java**
@@ -20,4 +27,12 @@ public class BootReceiver extends BroadcastReceiver {
         context.startService(startServiceIntent);
     }
 }
+
+public class ShutdownReceiver extends BroadcastReceiver {
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        //do your staf here, stop location tracking for example
+    }
+}
+
 ```
