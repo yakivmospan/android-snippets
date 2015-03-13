@@ -27,12 +27,14 @@ public class BootReceiver extends BroadcastReceiver {
         context.startService(startServiceIntent);
     }
 }
+```
 
+**ShutdownReceiver.java**
+```java
 public class ShutdownReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         //do your staf here, stop location tracking for example
     }
 }
-
 ```
