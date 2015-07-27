@@ -1,6 +1,4 @@
 ```java
-import android.os.Handler;
-
 import java.util.ArrayList;
 
 /**
@@ -17,9 +15,6 @@ public class AppStateTracker {
     private static AppStateTracker sInstance;
 
     private ArrayList<OnStateChangeListener> mListeners = new ArrayList<>();
-    private Handler mHandler = new Handler();
-
-    private boolean isNewActivityCreating;
 
     private boolean mIsInForeground;
     private int mForegroundScreensCount;
@@ -39,7 +34,6 @@ public class AppStateTracker {
     }
 
     public void onActivityStart() {
-        isNewActivityCreating = false;
         mForegroundScreensCount++;
         checkStateChange();
     }
@@ -49,43 +43,21 @@ public class AppStateTracker {
         checkStateChange();
     }
 
-    public void onActivityCreate() {
-        isNewActivityCreating = true;
-    }
-
     private void checkStateChange() {
-        // remove previously added check
-        mHandler.removeCallbacks(mCheckStateChangeRunnable);
-
-        // wait for one sec and make a check. delay is needed in case onStop get called but
-        // we actually created new activity and onCreate will be called soon. So we are waiting
-        // for that call.
-        mHandler.postDelayed(mCheckStateChangeRunnable, 1000);
-    }
-
-    private Runnable mCheckStateChangeRunnable = new Runnable() {
-        @Override
-        public void run() {
-            // wait when new activity will become foreground
-            if (isNewActivityCreating) {
-                return;
+        if (mForegroundScreensCount > 0 && !mIsInForeground) {
+            // app goes into foreground
+            for (OnStateChangeListener listener : mListeners) {
+                mIsInForeground = true;
+                listener.onForeground();
             }
-
-            if (mForegroundScreensCount > 0 && !mIsInForeground) {
-                // app goes into foreground
-                for (OnStateChangeListener listener : mListeners) {
-                    mIsInForeground = true;
-                    listener.onForeground();
-                }
-            } else if (mForegroundScreensCount == 0 && mIsInForeground) {
-                // app goes into background
-                for (OnStateChangeListener listener : mListeners) {
-                    mIsInForeground = false;
-                    listener.onBackground();
-                }
+        } else if (mForegroundScreensCount == 0 && mIsInForeground) {
+            // app goes into background
+            for (OnStateChangeListener listener : mListeners) {
+                mIsInForeground = false;
+                listener.onBackground();
             }
         }
-    };
+    }
 
     public void addOnStateChangeListener(OnStateChangeListener listener) {
         mListeners.add(listener);
