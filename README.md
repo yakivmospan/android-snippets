@@ -19,7 +19,7 @@
 - [Volley Request Manager - Lite](/articles/android/http/Volley%20Request%20Manager%20-%20Lite.md)
 - [Volley Request Manager](/articles/android/http/Volley%20Request%20Manager.md)
 
-### Presentatios
+### Presentations
 
 - [Technical Articles Writing](https://docs.google.com/presentation/d/1lsmhkqeZ0YfFejhAsymV0UpWauw4lffJ6rdOY_covOo/edit#slide=id.p)
 
