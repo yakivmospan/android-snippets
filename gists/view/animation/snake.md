@@ -7,7 +7,7 @@
 ```java
 SnakeAnimation.Params params = SnakeAnimation.Params.create(view)
         .setDelay(DELAY_DURATION)
-        .setScale(SCALE_DURATION, SCALE)
+        .setScale(SCALE_DURATION, SCALE_FACTOR)
         .setTranslate(TRANSLATE_DURATION, TRANSLATION_OFFSET, TRANSLATE_REPEAT_COUNT)
         .setRotate(ROTATE_DURATION, ROTATE_DEGREE, ROTATE_REPEAT_COUNT)
         .repeatOnEnd();
@@ -33,7 +33,7 @@ public class SnakeAnimation {
 
     public static final int DELAY_DURATION = 1000;
     public static final int SCALE_DURATION = 700;
-    public static final float SCALE = 1.5f;
+    public static final float SCALE_FACTOR = 1.5f;
 
     public static final int TRANSLATE_DURATION = 150;
     public static final int ROTATE_DURATION = 50;
@@ -73,7 +73,7 @@ public class SnakeAnimation {
         public static Params createDefault(@NonNull View view) {
             return SnakeAnimation.Params.create(view)
                     .setDelay(DELAY_DURATION)
-                    .setScale(SCALE_DURATION, SCALE)
+                    .setScale(SCALE_DURATION, SCALE_FACTOR)
                     .setTranslate(TRANSLATE_DURATION, TRANSLATION_OFFSET, TRANSLATE_REPEAT_COUNT)
                     .setRotate(ROTATE_DURATION, ROTATE_DEGREE, ROTATE_REPEAT_COUNT)
                     .repeatOnEnd();
