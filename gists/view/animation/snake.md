@@ -6,11 +6,11 @@
 
 ```java
 SnakeAnimation.Params params = SnakeAnimation.Params.create(view)
-        .delay(DELAY_DURATION)
-        .scale(SCALE_DURATION, SCALE)
-        .translate(TRANSLATE_DURATION, TRANSLATION_OFFSET, TRANSLATE_REPEAT_COUNT)
-        .rotate(ROTATE_DURATION, ROTATE_DEGREE, ROTATE_REPEAT_COUNT)
-        .repeatOnEnd(true);
+        .setDelay(DELAY_DURATION)
+        .setScale(SCALE_DURATION, SCALE)
+        .setTranslate(TRANSLATE_DURATION, TRANSLATION_OFFSET, TRANSLATE_REPEAT_COUNT)
+        .setRotate(ROTATE_DURATION, ROTATE_DEGREE, ROTATE_REPEAT_COUNT)
+        .repeatOnEnd();
 new SnakeAnimation(params).start();
 ```
 
@@ -72,45 +72,45 @@ public class SnakeAnimation {
 
         public static Params createDefault(@NonNull View view) {
             return SnakeAnimation.Params.create(view)
-                    .delay(DELAY_DURATION)
-                    .scale(SCALE_DURATION, SCALE)
-                    .translate(TRANSLATE_DURATION, TRANSLATION_OFFSET, TRANSLATE_REPEAT_COUNT)
-                    .rotate(ROTATE_DURATION, ROTATE_DEGREE, ROTATE_REPEAT_COUNT)
-                    .repeatOnEnd(true);
+                    .setDelay(DELAY_DURATION)
+                    .setScale(SCALE_DURATION, SCALE)
+                    .setTranslate(TRANSLATE_DURATION, TRANSLATION_OFFSET, TRANSLATE_REPEAT_COUNT)
+                    .setRotate(ROTATE_DURATION, ROTATE_DEGREE, ROTATE_REPEAT_COUNT)
+                    .repeatOnEnd();
         }
 
-        public Params listener(AnimatorListenerAdapter listener) {
+        public Params setListener(AnimatorListenerAdapter listener) {
             mListener = listener;
             return this;
         }
 
-        public Params delay(int startDelay) {
+        public Params setDelay(int startDelay) {
             mStartDelay = startDelay;
             return this;
         }
 
-        public Params repeatOnEnd(boolean repeatOnEnd) {
-            mRepeatOnEnd = repeatOnEnd;
-            return this;
-        }
-
-        public Params scale(int scaleDuration, float scale) {
+        public Params setScale(int scaleDuration, float scale) {
             mScaleDuration = scaleDuration;
             mScale = scale;
             return this;
         }
 
-        public Params translate(int duration, int toOffset, int repeatCount) {
+        public Params setTranslate(int duration, int toOffset, int repeatCount) {
             mTranslateDuration = duration;
             mTranslateOffset = toOffset;
             mTranslateRepeatCount = repeatCount;
             return this;
         }
 
-        public Params rotate(int duration, int toDegree, int repeatCount) {
+        public Params setRotate(int duration, int toDegree, int repeatCount) {
             mRotationDuration = duration;
             mRotateDegree = toDegree;
             mRotateRepeatCount = repeatCount;
+            return this;
+        }
+
+        public Params repeatOnEnd() {
+            mRepeatOnEnd = true;
             return this;
         }
     }
