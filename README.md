@@ -11,7 +11,8 @@
 - [Spinner](/gists/spinner)
 - [Widget](/gists/widget)
 
-Please don't forget to star, fork and share this repo with you friends if you find it useful. For more interesting stuff [visit my blog](http://yakivmospan.blogspot.com/). Thanks!
+Please don't forget to star, fork and share this repo with you friends if you find it useful.
+[Visit my blog](http://yakivmospan.blogspot.com/) for more interesting stuff. Thanks!
 
 ==
 
