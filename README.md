@@ -11,17 +11,7 @@
 - [Spinner](/gists/spinner)
 - [Widget](/gists/widget)
 
-### Articles
-
-- [Best Practice: Application](/articles/android/best%20practice/Best%20Practice.%20Application.md)
-- [Best Practice: SharedPreferences](/articles/android/best%20practice/Best%20Practice.%20SharedPreferences.md)
-- [Pebble: Little Helper](/articles/pebble/Pebble.%20Little%20Helper.md)
-- [Volley Request Manager - Lite](/articles/android/http/Volley%20Request%20Manager%20-%20Lite.md)
-- [Volley Request Manager](/articles/android/http/Volley%20Request%20Manager.md)
-
-### Presentations
-
-- [Technical Articles Writing](https://docs.google.com/presentation/d/1lsmhkqeZ0YfFejhAsymV0UpWauw4lffJ6rdOY_covOo/edit#slide=id.p)
+Please don't forget to star, fork and share this repo with you friends if you find it useful. For more interesting stuff [visit my blog](http://yakivmospan.blogspot.com/). Thanks!
 
 ==
 
