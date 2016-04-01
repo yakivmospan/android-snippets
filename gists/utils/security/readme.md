@@ -1,9 +1,9 @@
 # Security
 
 
-> [You can find source code here.](/gists/utils/security/Security.java)
-> 
->One util class to manage key generation, key storing and encryption on different APIs of Android.
+[You can find source code here.](/gists/utils/security/Security.java)
+ 
+One util class to manage key generation, key storing and encryption on different APIs of Android.
 
 As you may know android provided API to use `keystore` that is stored in system only from API 18. They introduced [AndroidKeyStore](http://developer.android.com/training/articles/keystore.html) provider that is responsible to manage this.
 
