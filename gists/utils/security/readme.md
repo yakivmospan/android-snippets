@@ -40,15 +40,17 @@ Log.i("Security", "Decrypted data: " + decryptedData);
 Depending on what key you need and what Android can give us API will create `keystore` file in application inner cache or will use `AndroidKeyStore` to hold keys. Key generation will be also made with different API. The tables below shows what will be used in different cases.
 
 In case you want to generate and save `KeyPair`
+
 | API   | Application Keystore | AndroidKeyStore |
-|-------|----------------------|-----------------|
+|:-----:|:--------------------:|:---------------:|
 |`< 18` |  `+`                 |                 |
 |`>= 18`|                      |        `+`      |
 
 
 In case you want to generate and save `SecretKey`
+
 | API   | Application Keystore | AndroidKeyStore |
-|-------|----------------------|-----------------|
+|:-----:|:--------------------:|:---------------:|
 |`< 18` |  `+`                 |                 |
 |`>= 23`|                      |        `+`      |
 
