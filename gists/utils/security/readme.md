@@ -7,9 +7,9 @@ One util class to manage key generation, key storing and encryption on different
 
 As you may know android provided API to use `keystore` that is stored in system only from API 18. They introduced [AndroidKeyStore](http://developer.android.com/training/articles/keystore.html) provider that is responsible to manage this.
 
-But as always there are underwater stones. Up to API 23 you are only able to create asymmetric keys using  `AndroidKeyStore` provider. Also [algorithms](http://developer.android.com/training/articles/keystore.html#SupportedAlgorithms) that you can use are limited.
+But as always there are underwater stones. Up to API 23 you are only able to create asymmetric keys using  `AndroidKeyStore` provider. Also [algorithms](http://developer.android.com/training/articles/keystore.html#SupportedAlgorithms) that you can use are limited. And what about devices below API 18 ?
 
-I've create API that wraps default [JCA](http://docs.oracle.com/javase/7/docs/technotes/guides/security/crypto/CryptoSpec.html) api and `AndroidKeyStore` API and makes it easy to create, manage and use your keys.
+I've create API that wraps default [JCA](http://docs.oracle.com/javase/7/docs/technotes/guides/security/crypto/CryptoSpec.html) api and `AndroidKeyStore` API and makes it easy to create, manage and use your keys on any andorid API.
 
 ## Sample
 
@@ -37,7 +37,7 @@ Log.i("Security", "Decrypted data: " + decryptedData);
 
 ## How it works?
 
-Depending on what key you need and what Android can give to us, API will create `keystore` file in application inner cache or will use `AndroidKeyStore` to hold keys. Key generation will be also made with different API. The tables below shows what will be used in different cases.
+Depending on what key you need and what Android you are using, API will create `keystore` file in application inner cache or will use `AndroidKeyStore` to hold keys. Key generation will be also made with different API. The tables below shows what will be used in different cases.
 
 In case you want to generate and save `Asymmetric` key
 
