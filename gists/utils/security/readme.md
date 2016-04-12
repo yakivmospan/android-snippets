@@ -73,8 +73,6 @@ In general it creates simple interface to work with `Keystore` using API provide
 
 ## Extended Usage
 
-##### Create custom key
-
 Instead of using `generateAsymmetricKey(@NonNull String alias, char[] password)` method you can use ` generateAsymmetricKey(@NonNull KeyProps keyProps)` one, and  define key with specific options.
  
 ```java
