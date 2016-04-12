@@ -38,6 +38,7 @@ import java.util.Date;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
+import javax.crypto.CipherOutputStream;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
@@ -53,15 +54,39 @@ import static java.security.KeyStore.getInstance;
 
 public final class Security {
 
+    public static final String ALGORITHM_AES = "AES";
+    public static final String ALGORITHM_RSA = "RSA";
+    public static final String ALGORITHM_SHA256_WITH_RSA_ENCRYPTION = "SHA256WithRSAEncryption";
+    public static final String BLOCK_MODE_ECB = "ECB";
+    public static final String BLOCK_MODE_CBC = "CBC";
+    public static final String PADDING_PKCS_1 = "PKCS1Padding";
+    public static final String PADDING_PKCS_7 = "PKCS7Padding";
+
+    public static final String RSA_ECB_PKCS1PADDING = "RSA/ECB/PKCS1Padding";
+    public static final String AES_CBC_PKCS7PADDING = "AES/CBC/PKCS7Padding";
+
+    public static final int RSA_ECB_PKCS1PADDING_1024_ENCRYPTION_BLOCK_SIZE = 117;
+    public static final int RSA_ECB_PKCS1PADDING_1024_DECRYPTION_BLOCK_SIZE = 128;
+
     /**
      * For default created asymmetric keys
      */
-    public static String TRANSFORMATION_ASYMMETRIC = "RSA/ECB/PKCS1Padding";
+    public static String TRANSFORMATION_ASYMMETRIC = RSA_ECB_PKCS1PADDING;
 
     /**
      * For default created symmetric keys
      */
-    public static String TRANSFORMATION_SYMMETRIC = "AES/CBC/PKCS7Padding";
+    public static String TRANSFORMATION_SYMMETRIC = AES_CBC_PKCS7PADDING;
+
+    /**
+     * For default created asymmetric keys
+     */
+    public static int ENCRYPTION_BOLOCK_SIZE = RSA_ECB_PKCS1PADDING_1024_ENCRYPTION_BLOCK_SIZE;
+
+    /**
+     * For default created asymmetric keys
+     */
+    public static int DECRYPTION_BOLOCK_SIZE = RSA_ECB_PKCS1PADDING_1024_DECRYPTION_BLOCK_SIZE;
 
     private static String TAG = Security.class.getName();
     private static final int VERSION = Build.VERSION.SDK_INT;
@@ -71,18 +96,10 @@ public final class Security {
      */
     public static class Store extends ErrorHandler {
 
-        public static final String ALGORITHM_AES = "AES";
-        public static final String ALGORITHM_RSA = "RSA";
-        public static final String ALGORITHM_SHA256_WITH_RSA_ENCRYPTION = "SHA256WithRSAEncryption";
-
         private static final String PROVIDER_BC = "BC";
         private static final String PROVIDER_ANDROID_KEY_STORE = "AndroidKeyStore";
         private static final String DEFAULT_KEYSTORE_NAME = "keystore";
         private static final char[] DEFAULT_KEYSTORE_PASSWORD = BuildConfig.APPLICATION_ID.toCharArray();
-        private static final String BLOCK_MODE_ECB = "ECB";
-        private static final String BLOCK_MODE_CBC = "CBC";
-        private static final String PADDING_PKCS_1 = "PKCS1Padding";
-        private static final String PADDING_PKCS_7 = "PKCS7Padding";
 
         private String mKeystoreName = DEFAULT_KEYSTORE_NAME;
         private char[] mKeystorePassword = DEFAULT_KEYSTORE_PASSWORD;
@@ -445,7 +462,6 @@ public final class Security {
             return (X509Certificate) method.invoke(generator, keyPair.getPrivate(), PROVIDER_BC);
         }
 
-
         @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
         private KeyPairGeneratorSpec keyPropsToKeyPairGeneratorSpec(KeyProps keyProps) throws NoSuchAlgorithmException {
             return new KeyPairGeneratorSpec.Builder(mContext)
@@ -487,7 +503,6 @@ public final class Security {
             SecretKey key = keyGenerator.generateKey();
             return key;
         }
-
 
         private KeyPair getAsymmetricKeyFromDefaultKeyStore(@NonNull String alias, char[] password) {
             KeyPair result = null;
@@ -575,14 +590,36 @@ public final class Security {
     public static class Crypto extends ErrorHandler {
 
         private static final String UTF_8 = "UTF-8";
-        public static final String IV_SEPERATOR = "]";
+        private static final String IV_SEPARATOR = "]";
         private String mTransformation;
+        private int mEncryptionBlockSize;
+        private int mDecryptionBlockSize;
 
         /**
+         * Initializes Crypto to encrypt/decrypt data with given transformation.
+         *
          * @param transformation is used to encrypt/decrypt data. See {@link Cipher} for more info.
          */
         public Crypto(@NonNull String transformation) {
             mTransformation = transformation;
+        }
+
+        /**
+         * Initializes Crypto to encrypt/decrypt data using buffer with provided lengths. This might be useful if you
+         * want to encrypt/decrypt big amount of data using Block Based Algorithms (such as RSA). By default
+         * they can proceed only one block of data, not bigger then a size of a key that was used for
+         * encryption/decryption.
+         *
+         * @param transformation is used to encrypt/decrypt data. See {@link Cipher} for more info.
+         * @param encryptionBlockSize block size for keys used with this Crypto for encryption. For 1024 size
+         * RSA/ECB/PKCS1Padding key will equal to (keySize / 8) - 11 == (1024 / 8) - 11 == 117
+         * @param decryptionBlockSize block size for keys used with this Crypto for decryption. For 1024 size
+         * RSA/ECB/PKCS1Padding key will equal to (keySize / 8) == (1024 / 8) == 128
+         */
+        public Crypto(@NonNull String transformation, int encryptionBlockSize, int decryptionBlockSize) {
+            mTransformation = transformation;
+            mEncryptionBlockSize = encryptionBlockSize;
+            mDecryptionBlockSize = decryptionBlockSize;
         }
 
         /**
@@ -618,11 +655,17 @@ public final class Security {
                 if (useInitialisationVectors) {
                     byte[] iv = cipher.getIV();
                     String ivString = Base64.encodeToString(iv, Base64.DEFAULT);
-                    result = ivString + IV_SEPERATOR;
+                    result = ivString + IV_SEPARATOR;
                 }
 
                 byte[] plainData = data.getBytes(UTF_8);
-                byte[] decodedData = decode(cipher, plainData);
+                byte[] decodedData;
+                if (mEncryptionBlockSize == 0 && mDecryptionBlockSize == 0) {
+                    decodedData = decode(cipher, plainData);
+                } else {
+                    decodedData = decodeWithBuffer(cipher, plainData, mEncryptionBlockSize);
+                }
+
                 String encodedString = Base64.encodeToString(decodedData, Base64.DEFAULT);
                 result += encodedString;
             } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException | BadPaddingException |
@@ -672,7 +715,7 @@ public final class Security {
                 String encodedString;
 
                 if (useInitialisationVectors) {
-                    String[] split = data.split(IV_SEPERATOR);
+                    String[] split = data.split(IV_SEPARATOR);
                     String ivString = split[0];
                     encodedString = split[1];
                     IvParameterSpec ivSpec = new IvParameterSpec(Base64.decode(ivString, Base64.DEFAULT));
@@ -682,7 +725,13 @@ public final class Security {
                     cipher.init(Cipher.DECRYPT_MODE, key);
                 }
 
-                byte[] decodedData = decode(cipher, Base64.decode(encodedString, Base64.DEFAULT));
+                byte[] decodedData;
+                byte[] encryptedData = Base64.decode(encodedString, Base64.DEFAULT);
+                if (mEncryptionBlockSize == 0 && mDecryptionBlockSize == 0) {
+                    decodedData = decode(cipher, encryptedData);
+                } else {
+                    decodedData = decodeWithBuffer(cipher, encryptedData, mDecryptionBlockSize);
+                }
                 result = new String(decodedData, UTF_8);
             } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException | BadPaddingException | IllegalBlockSizeException | IOException | InvalidAlgorithmParameterException e) {
                 onException(e);
@@ -693,15 +742,62 @@ public final class Security {
         private byte[] decode(@NonNull Cipher cipher, @NonNull byte[] plainData)
                 throws IOException, IllegalBlockSizeException, BadPaddingException {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            byte[] output = cipher.update(plainData);
-            if (output != null) {
-                baos.write(output);
+            CipherOutputStream cipherOutputStream = new CipherOutputStream(baos, cipher);
+            cipherOutputStream.write(plainData);
+            cipherOutputStream.close();
+            return baos.toByteArray();
+        }
+
+        private byte[] decodeWithBuffer(@NonNull Cipher cipher, @NonNull byte[] plainData, int bufferLength)
+                throws IllegalBlockSizeException, BadPaddingException {
+            // string initialize 2 buffers.
+            // scrambled will hold intermediate results
+            byte[] scrambled;
+
+            // toReturn will hold the total result
+            byte[] toReturn = new byte[0];
+
+            // holds the bytes that have to be modified in one step
+            byte[] buffer = new byte[(plainData.length > bufferLength ? bufferLength : plainData.length)];
+
+            for (int i = 0; i < plainData.length; i++) {
+                if ((i > 0) && (i % bufferLength == 0)) {
+                    //execute the operation
+                    scrambled = cipher.doFinal(buffer);
+                    // add the result to our total result.
+                    toReturn = append(toReturn, scrambled);
+                    // here we calculate the bufferLength of the next buffer required
+                    int newLength = bufferLength;
+
+                    // if newLength would be longer than remaining bytes in the bytes array we shorten it.
+                    if (i + bufferLength > plainData.length) {
+                        newLength = plainData.length - i;
+                    }
+                    // clean the buffer array
+                    buffer = new byte[newLength];
+                }
+                // copy byte into our buffer.
+                buffer[i % bufferLength] = plainData[i];
             }
-            output = cipher.doFinal();
-            baos.write(output);
-            byte[] result = baos.toByteArray();
-            baos.close();
-            return result;
+
+            // this step is needed if we had a trailing buffer. should only happen when encrypting.
+            // example: we encrypt 110 bytes. 100 bytes per run means we "forgot" the last 10 bytes. they are in the buffer array
+            scrambled = cipher.doFinal(buffer);
+
+            // final step before we can return the modified data.
+            toReturn = append(toReturn, scrambled);
+            return toReturn;
+        }
+
+        private byte[] append(byte[] prefix, byte[] suffix) {
+            byte[] toReturn = new byte[prefix.length + suffix.length];
+            for (int i = 0; i < prefix.length; i++) {
+                toReturn[i] = prefix[i];
+            }
+            for (int i = 0; i < suffix.length; i++) {
+                toReturn[i + prefix.length] = suffix[i];
+            }
+            return toReturn;
         }
     }
 
