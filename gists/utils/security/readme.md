@@ -73,11 +73,17 @@ In general it creates simple interface to work with `Keystore` using API provide
 
 ## Extended Usage
 
+##### Create custom key
+
 Instead of using `generateAsymmetricKey(@NonNull String alias, char[] password)` method you can use ` generateAsymmetricKey(@NonNull KeyProps keyProps)` one, and  define key with specific options.
  
 ```java
 // Create store with specific name and password
 Store store = new Store(context, STORE_NAME, STORE_PASSWORD);
+
+final int alias = "alias";
+final int password = "password".toCharArray();
+final int keysize = 512;
 
 final Calendar start = Calendar.getInstance();
 final Calendar end = Calendar.getInstance();
@@ -88,7 +94,7 @@ end.add(Calendar.YEAR, 1);
 KeyProps keyProps = new KeyProps.Builder()
    .setAlias(alias)
    .setPassword(password)
-   .setKeySize(512)
+   .setKeySize(keysize)
    .setKeyType("RSA")
    .setSerialNumber(BigInteger.ONE)
    .setSubject(new X500Principal("CN=" + alias + " CA Certificate"))
@@ -102,12 +108,20 @@ KeyProps keyProps = new KeyProps.Builder()
 // Generate KeyPair depending on KeyProps 
 KeyPair keyPair = store.generateAsymmetricKey(keyProps);
 
-// Encrypt/Dencrypt data with or with out Initialisation Vectors
+// Encrypt/Dencrypt data using buffer with or with out Initialisation Vectors
 // This additional level of safety is required on 23 API level for
-// some algorithms 
-Security.Crypto crypto = new Security.Crypto(Security.TRANSFORMATION_SYMMETRIC);
+// some algorithms. Specify encryption/decryption block size to use buffer for
+// large data when using block based algorithms(such as RSA) 
+
+final int encryptionBlockSize = keysize / 8 - 11; // as specified for RSA/ECB/PKCS1Padding keys 
+final int decryptionBlockSize = keysize / 8; // as specified for RSA/ECB/PKCS1Padding keys 
+
+Security.Crypto crypto = new Security.Crypto("RSA/ECB/PKCS1Padding", encryptionBlockSize, decryptionBlockSize);
 
 String text = "Sample text";
 String encryptedData = crypto.encrypt(text, key, false);
 String decryptedData = crypto.decrypt(encryptedData, key, false);
 ```
+
+
+
