@@ -510,7 +510,9 @@ public final class Security {
                 KeyStore keyStore = createDefaultKeyStore();
                 PasswordProtection protection = new PasswordProtection(password);
                 PrivateKeyEntry entry = (PrivateKeyEntry) keyStore.getEntry(alias, protection);
-                result = new KeyPair(entry.getCertificate().getPublicKey(), entry.getPrivateKey());
+                if(entry != null) {
+                    result = new KeyPair(entry.getCertificate().getPublicKey(), entry.getPrivateKey());
+                }
             } catch (KeyStoreException | CertificateException | IOException | NoSuchAlgorithmException | UnrecoverableEntryException e) {
                 onException(e);
             }
@@ -522,8 +524,10 @@ public final class Security {
             try {
                 KeyStore keyStore = createAndroidKeystore();
                 PrivateKey privateKey = (PrivateKey) keyStore.getKey(alias, null);
-                PublicKey publicKey = keyStore.getCertificate(alias).getPublicKey();
-                result = new KeyPair(publicKey, privateKey);
+                if(privateKey != null) {
+                    PublicKey publicKey = keyStore.getCertificate(alias).getPublicKey();
+                    result = new KeyPair(publicKey, privateKey);
+                }
             } catch (KeyStoreException | CertificateException | IOException | NoSuchAlgorithmException | UnrecoverableEntryException e) {
                 onException(e);
             }
