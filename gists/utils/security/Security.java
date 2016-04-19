@@ -27,7 +27,6 @@ import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
-import java.security.SecureRandom;
 import java.security.UnrecoverableEntryException;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateException;
@@ -337,6 +336,7 @@ public final class Security {
             return null;
         }
 
+        @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
         private KeyPair generateAndroidJellyAsymmetricKey(KeyProps keyProps) {
             try {
                 KeyPairGeneratorSpec keySpec = keyPropsToKeyPairGeneratorSpec(keyProps);
@@ -347,6 +347,7 @@ public final class Security {
             return null;
         }
 
+        @TargetApi(Build.VERSION_CODES.M)
         private KeyPair generateAndroidMAsymmetricKey(KeyProps keyProps) {
             try {
                 KeyGenParameterSpec keySpec = keyPropsToKeyGenParameterASpec(keyProps);
@@ -386,6 +387,7 @@ public final class Security {
             return null;
         }
 
+        @TargetApi(Build.VERSION_CODES.M)
         private SecretKey generateAndroidSymmetricKey(KeyProps keyProps) {
             try {
                 String provider = PROVIDER_ANDROID_KEY_STORE;
