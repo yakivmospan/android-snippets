@@ -151,7 +151,7 @@ public final class Security {
                     .setSerialNumber(BigInteger.ONE)
                     .setSubject(new X500Principal("CN=" + alias + " CA Certificate"))
                     .setStartDate(start.getTime())
-                    .setEndDate(start.getTime())
+                    .setEndDate(end.getTime())
                     .setBlockModes(BLOCK_MODE_ECB)
                     .setEncryptionPaddings(PADDING_PKCS_1)
                     .setSignatureAlgorithm(ALGORITHM_SHA256_WITH_RSA_ENCRYPTION)
@@ -367,7 +367,7 @@ public final class Security {
 
         private KeyPair createAsymmetricKey(KeyProps keyProps) throws NoSuchAlgorithmException {
             KeyPairGenerator generator = KeyPairGenerator.getInstance(keyProps.mKeyType);
-            generator.initialize(keyProps.mKeySize, new SecureRandom());
+            generator.initialize(keyProps.mKeySize);
             return generator.generateKeyPair();
         }
 
@@ -499,7 +499,7 @@ public final class Security {
 
         private SecretKey createSymmetricKey(KeyProps keyProps) throws NoSuchAlgorithmException {
             KeyGenerator keyGenerator = KeyGenerator.getInstance(keyProps.mKeyType);
-            keyGenerator.init(keyProps.mKeySize, new SecureRandom());
+            keyGenerator.init(keyProps.mKeySize);
             SecretKey key = keyGenerator.generateKey();
             return key;
         }
@@ -507,11 +507,12 @@ public final class Security {
         private KeyPair getAsymmetricKeyFromDefaultKeyStore(@NonNull String alias, char[] password) {
             KeyPair result = null;
             try {
+                // get asymmetric key
                 KeyStore keyStore = createDefaultKeyStore();
                 PasswordProtection protection = new PasswordProtection(password);
                 PrivateKeyEntry entry = (PrivateKeyEntry) keyStore.getEntry(alias, protection);
                 if(entry != null) {
-                    result = new KeyPair(entry.getCertificate().getPublicKey(), entry.getPrivateKey());
+                    KeyPair keyPair = new KeyPair(entry.getCertificate().getPublicKey(), entry.getPrivateKey());
                 }
             } catch (KeyStoreException | CertificateException | IOException | NoSuchAlgorithmException | UnrecoverableEntryException e) {
                 onException(e);
