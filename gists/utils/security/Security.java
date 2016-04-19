@@ -512,7 +512,7 @@ public final class Security {
                 PasswordProtection protection = new PasswordProtection(password);
                 PrivateKeyEntry entry = (PrivateKeyEntry) keyStore.getEntry(alias, protection);
                 if(entry != null) {
-                    KeyPair keyPair = new KeyPair(entry.getCertificate().getPublicKey(), entry.getPrivateKey());
+                    result = new KeyPair(entry.getCertificate().getPublicKey(), entry.getPrivateKey());
                 }
             } catch (KeyStoreException | CertificateException | IOException | NoSuchAlgorithmException | UnrecoverableEntryException e) {
                 onException(e);
