@@ -464,15 +464,20 @@ public final class Security {
             return (X509Certificate) method.invoke(generator, keyPair.getPrivate(), PROVIDER_BC);
         }
 
-        @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
+        @TargetApi(Build.VERSION_CODES.KITKAT)
         private KeyPairGeneratorSpec keyPropsToKeyPairGeneratorSpec(KeyProps keyProps) throws NoSuchAlgorithmException {
-            return new KeyPairGeneratorSpec.Builder(mContext)
+            KeyPairGeneratorSpec.Builder builder = new KeyPairGeneratorSpec.Builder(mContext)
                     .setAlias(keyProps.mAlias)
                     .setSerialNumber(keyProps.mSerialNumber)
                     .setSubject(keyProps.mSubject)
                     .setStartDate(keyProps.mStartDate)
-                    .setEndDate(keyProps.mEndDate)
-                    .build();
+                    .setEndDate(keyProps.mEndDate);
+
+            if(VERSION > Build.VERSION_CODES.JELLY_BEAN_MR2){
+                builder.setKeySize(keyProps.mKeySize);
+            }
+
+            return builder.build();
         }
 
         @TargetApi(Build.VERSION_CODES.M)
